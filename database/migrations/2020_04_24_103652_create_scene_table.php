@@ -13,7 +13,7 @@ class CreateSceneTable extends Migration
      */
     public function up()
     {
-        Schema::create('scene', function (Blueprint $table) {
+        Schema::create('scenes', function (Blueprint $table) {
             $table->integer("campaign_id");
             $table->integer("user_id");
             $table->integer("char_id");

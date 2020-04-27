@@ -13,7 +13,7 @@ class CreateConsumableTable extends Migration
      */
     public function up()
     {
-        Schema::create('consumable', function (Blueprint $table) {
+        Schema::create('consumables', function (Blueprint $table) {
             $table->integer("item_id");
             $table->string("description");
         });

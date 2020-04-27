@@ -13,7 +13,7 @@ class CreateWeaponTable extends Migration
      */
     public function up()
     {
-        Schema::create('weapon', function (Blueprint $table) {
+        Schema::create('weapons', function (Blueprint $table) {
             $table->integer("item_id");
             $table->integer("hands");
             $table->integer("weapon_range");

@@ -20,4 +20,13 @@ Route::get("/hola", function() {
     return view("user.create");
 });
 
+Route::resource('/armor', 'ArmorController');
+Route::resource('/bag', 'UserController');
+Route::resource('/campaign', 'CampaignController');
+Route::resource('/character', 'CharacterController');
+Route::resource('/consumable', 'ConsumableController');
+Route::resource('/item', 'ItemController');
+Route::resource('/scene', 'SceneController');
+Route::resource('/stats', 'StatsController');
 Route::resource('/user', 'UserController');
+Route::resource('/weapon', 'WeaponController');

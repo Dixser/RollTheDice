@@ -13,7 +13,7 @@ class CreateBagTable extends Migration
      */
     public function up()
     {
-        Schema::create('bag', function (Blueprint $table) {
+        Schema::create('bags', function (Blueprint $table) {
             $table->integer("bag_id");
             $table->integer("item_id");
         });
