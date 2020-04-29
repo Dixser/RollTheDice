@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get("/hola", function() {
-    return view("user.create");
+Route::get("/login", function() {
+    return view("user.login");
 });
-
+Route::post("/login",["as"=> "login", "uses"=>"LoginController@login"]);
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+});
 Route::resource('/armor', 'ArmorController');
 Route::resource('/bag', 'UserController');
 Route::resource('/campaign', 'CampaignController');
@@ -30,3 +34,4 @@ Route::resource('/scene', 'SceneController');
 Route::resource('/stats', 'StatsController');
 Route::resource('/user', 'UserController');
 Route::resource('/weapon', 'WeaponController');
+

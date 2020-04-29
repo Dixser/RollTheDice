@@ -3,11 +3,11 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Editorial by HTML5 UP</title>
+		<title>Roll the Dice</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/fontawesome-all.min.css') }}" />
+        <link rel="stylesheet" href="{{ URL::asset('css/fontawesome-all.min.css') }}" />
 
 	</head>
 	<body class="is-preload">
@@ -22,8 +22,13 @@
 							<header id="header">
 									<a href="index.html" class="logo"><strong>Roll</strong> the Dice</a>
 									<ul class="icons">
+										@auth
+										<li><span>{{Auth::user()->username}}</span></li>
+										<li><a href="/logout" class="button small primary">Cerrar Sesión</a></li>
+										@else
 										<li><a href="/user/create" class="button big">Registro</a></li>
-										<li><a href="/user/create" class="button big primary">Iniciar Sesión</a></li>
+										<li><a href="/login" class="button big primary">Iniciar Sesión</a></li>
+										@endauth
 									</ul>
 								</header>
 								
@@ -38,9 +43,7 @@
 
 							<!-- Search -->
 								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
+									<a href="/" class="image"><img src="images/logo.png" width="300px" alt=""></a>
 								</section>
 
 							<!-- Menu -->
@@ -49,11 +52,17 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="/">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
+										<li><a href="/">Inicio</a></li>
 										<li>
-											<span class="opener">Submenu</span>
+											<span class="opener">Campañas</span>
+											<ul>
+												<li><a href="/campaign">Ver Campañas</a></li>
+												<li><a href="#">Mis Campañas</a></li>
+											</ul>
+										</li>
+										<li><a href="/character">Personajes</a></li>
+										<li>
+											<span class="opener">Razas</span>
 											<ul>
 												<li><a href="#">Lorem Dolor</a></li>
 												<li><a href="#">Ipsum Adipiscing</a></li>
@@ -61,10 +70,8 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
 										<li>
-											<span class="opener">Another Submenu</span>
+											<span class="opener">Equipo</span>
 											<ul>
 												<li><a href="#">Lorem Dolor</a></li>
 												<li><a href="#">Ipsum Adipiscing</a></li>
@@ -72,13 +79,10 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
 									</ul>
 								</nav>
 
-							<!-- Section -->
+							<!-- Section
 								<section>
 									<header class="major">
 										<h2>Ante interdum</h2>
@@ -101,6 +105,7 @@
 										<li><a href="#" class="button">More</a></li>
 									</ul>
 								</section>
+								 -->
 
 							<!-- Footer -->
 								<footer id="footer">

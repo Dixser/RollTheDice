@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Character;
 class CharacterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
+    
     public function index()
     {
     }
@@ -26,7 +32,7 @@ class CharacterController extends Controller
         ]);
 
         $character = new Character();
-        $character->user_id = 1;
+        $character->user_id = Auth::user()->id;
         $character->char_name = request("char_name");
         $character->race = request("race");
         $character->sex = request("sex");

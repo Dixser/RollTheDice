@@ -5,7 +5,7 @@
                         <p>Nombre de la campaña:
                         <input type="text" @error("campaign_name") class="error" @enderror name="campaign_name" value="{{old('campaign_name')}}"></p>
                         @error("campaign_name")
-                            <p class="error">{{ $errors->first("campaign_name") }}</p>
+                            <p class="error">{{ $errors->first("campaign_name", "Este campo es requerido") }}</p>
                         @enderror
 
                         <p>Contraseña de la campaña:

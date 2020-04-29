@@ -6,8 +6,15 @@ use Illuminate\Http\Request;
 use App\Campaign;
 class CampaignController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
+
     public function index()
     {
+        return view("campaign.index");
     }
     public function create()
     {
@@ -22,7 +29,7 @@ class CampaignController extends Controller
         ]);
 
         $campaign = new Campaign();
-        $campaign->master_id = 1;
+        $campaign->master_id = Auth::user()->id;
         $campaign->campaign_name = request("campaign_name");
         $campaign->campaign_password = request("campaign_password");
         $campaign->chat_file = $campaign->master_id."_".$campaign->campaign_name.".txt";

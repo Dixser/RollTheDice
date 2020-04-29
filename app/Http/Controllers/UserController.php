@@ -40,7 +40,7 @@ class UserController extends Controller
 
         $user = new User();
         $user->username = request("username");
-        $user->password = request("password");
+        $user->password = bcrypt(request("password"));
 
         $user->save();
         return view("home");
