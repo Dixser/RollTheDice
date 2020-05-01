@@ -20,7 +20,7 @@
 						<div class="inner">
 							<!-- Header -->
 							<header id="header">
-									<a href="index.html" class="logo"><strong>Roll</strong> the Dice</a>
+									<a href="/" class="logo"><strong>Roll</strong> the Dice</a>
 									<ul class="icons">
 										@auth
 										<li><span>{{Auth::user()->username}}</span></li>
@@ -57,10 +57,17 @@
 											<span class="opener">Campañas</span>
 											<ul>
 												<li><a href="/campaign">Ver Campañas</a></li>
-												<li><a href="#">Mis Campañas</a></li>
+												<li><a href="/campaign/create">Crear campaña</a></li>
+												<li><a href="/master">Panel de Master</a></li>
 											</ul>
 										</li>
-										<li><a href="/character">Personajes</a></li>
+										<li>
+											<span class="opener">Personajes</span>
+											<ul>
+												<li><a href="/character">Mis personajes</a></li>
+												<li><a href="#">Crear personaje</a></li>
+											</ul>
+										</li>
 										<li>
 											<span class="opener">Razas</span>
 											<ul>

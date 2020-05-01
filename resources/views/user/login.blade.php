@@ -1,6 +1,8 @@
 @extends("layout.index")
 @section("content")
-
+<br>
+	<h1>Iniciar Sesión</h1>
+</header>
             <div class="row">
                 <div class="col-md-8">
                     <form action="/login" method="POST">

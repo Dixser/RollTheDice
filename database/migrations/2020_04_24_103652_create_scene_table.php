@@ -17,7 +17,6 @@ class CreateSceneTable extends Migration
             $table->integer("campaign_id");
             $table->integer("user_id");
             $table->integer("char_id");
-            $table->integer("bag_id");
         });
     }
 

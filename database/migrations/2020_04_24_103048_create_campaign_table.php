@@ -15,7 +15,7 @@ class CreateCampaignTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments("campaign_id");
-            $table->integer("master_id");
+            $table->string("master");
             $table->string("campaign_name");
             $table->string("campaign_password");
             $table->string("chat_file");

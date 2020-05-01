@@ -14,7 +14,7 @@ class CreateBagTable extends Migration
     public function up()
     {
         Schema::create('bags', function (Blueprint $table) {
-            $table->integer("bag_id");
+            $table->integer("char_id");
             $table->integer("item_id");
         });
     }

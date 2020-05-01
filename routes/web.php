@@ -24,6 +24,8 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
+Route::get("/master","CampaignController@master");
+
 Route::resource('/armor', 'ArmorController');
 Route::resource('/bag', 'UserController');
 Route::resource('/campaign', 'CampaignController');

@@ -1,5 +1,8 @@
 @extends("layout.index")
 @section("content")
+<br>
+	<h1>Crear una campaña</h1>
+</header>
                     <form action="/campaign" method="POST">
                         @csrf
                         <p>Nombre de la campaña:

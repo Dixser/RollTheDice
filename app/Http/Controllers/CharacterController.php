@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Character;
+use Auth;
 class CharacterController extends Controller
 {
 
@@ -14,6 +15,8 @@ class CharacterController extends Controller
     
     public function index()
     {
+        $characters = Character::all()->where("user_id",Auth::user()->id);
+        return view("character.index", ["characters" => $characters]);
     }
     public function create()
     {
@@ -41,7 +44,7 @@ class CharacterController extends Controller
         $character->hometown = request("hometown");
 
         $character->save();
-        return view("home");
+        return redirect()->action('CharacterController@index');
     }
     public function show($id)
     {
