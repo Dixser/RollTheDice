@@ -43,7 +43,7 @@
 
 							<!-- Search -->
 								<section id="search" class="alt">
-									<a href="/" class="image"><img src="images/logo.png" width="300px" alt=""></a>
+									<a href="/" class="image"><img src="{{URL::asset('images/logo.png') }}" width="300px" alt=""></a>
 								</section>
 
 							<!-- Menu -->
@@ -57,6 +57,7 @@
 											<span class="opener">Campañas</span>
 											<ul>
 												<li><a href="/campaign">Ver Campañas</a></li>
+												<li><a href="/scene">Mis campañas</a></li>
 												<li><a href="/campaign/create">Crear campaña</a></li>
 												<li><a href="/master">Panel de Master</a></li>
 											</ul>
@@ -65,7 +66,7 @@
 											<span class="opener">Personajes</span>
 											<ul>
 												<li><a href="/character">Mis personajes</a></li>
-												<li><a href="#">Crear personaje</a></li>
+												<li><a href="/character/create">Crear personaje</a></li>
 											</ul>
 										</li>
 										<li>
@@ -125,11 +126,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/browser.min.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/util.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/main.js') }}"></script>
 
 	</body>
 </html>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Campaign;
-use App\Http\Controllers\Character;
+use App\Character;
+use App\Scene;
+use App\Http\Controllers\CharacterController;
 use Auth;
 class CampaignController extends Controller
 {
@@ -17,7 +19,7 @@ class CampaignController extends Controller
     public function index()
     {
         $campaigns = Campaign::all();
-        $characters = Characters::all()->where("user_id",Auth::user()->id);
+        $characters = Character::all()->where("user_id",Auth::user()->id);
         return view("campaign.index", ["campaigns" => $campaigns, "characters" => $characters]);
     }
     public function create()

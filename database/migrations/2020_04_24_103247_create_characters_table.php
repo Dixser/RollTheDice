@@ -20,6 +20,7 @@ class CreateCharactersTable extends Migration
             $table->string("race");
             $table->string("sex");
             $table->string("class");
+            $table->string("alignment");
             $table->string("religion");
             $table->string("hometown");
         });

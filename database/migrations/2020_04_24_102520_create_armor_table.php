@@ -14,7 +14,7 @@ class CreateArmorTable extends Migration
     public function up()
     {
         Schema::create('armors', function (Blueprint $table) {
-            $table->id();
+            $table->id("item_id");
             $table->string("debility");
             $table->integer("penality");
             $table->string("body_part");

@@ -26,7 +26,6 @@ class CreateStatsTable extends Migration
             $table->integer("max_health");
             $table->integer("armor");
             $table->integer("gold");
-            
         });
     }
 

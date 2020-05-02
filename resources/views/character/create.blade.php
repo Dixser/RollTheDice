@@ -1,6 +1,6 @@
 @extends("layout.index")
 @section("content")
-
+        <h1>Creación de personajes</h1>
                     <form action="/character" method="POST">
                         @csrf
             <div class="row">
@@ -23,6 +23,22 @@
                         </select>
                         @error("race")
                             <p class="error">{{ $errors->first("race") }}</p>
+                        @enderror
+
+                        <p>Alineamiento:
+                        <select name="alignment" @error("alignment") class="error" @enderror value="{{old('alignment')}}">
+                            <option value="Legal bueno">Legal bueno</option>
+                            <option value="Neutral bueno">Neutral bueno</option>
+                            <option value="Caótico bueno">Caótico bueno</option>
+                            <option value="Legal neutral">Legal neutral</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Caótico neutral">Caótico neutral</option>
+                            <option value="Legal malvado">Legal malvado</option>
+                            <option value="Neutral malvado">Neutral malvado</option>
+                            <option value="Caótico malvado">Caótico malvado</option>
+                        </select>
+                        @error("alignment")
+                            <p class="error">{{ $errors->first("alignment") }}</p>
                         @enderror
 
                     </div>

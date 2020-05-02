@@ -13,15 +13,25 @@
 <th>ID</th>
 <th>Nombre de la campaña</th>
 <th>Master</th>
+<th>Personaje</th>
 <th>Contraseña</th>
 <th></th>
 </tr>
 @foreach ($campaigns as $campaign)
-<form action="">
+<form action="/scene" method="POST">
+@csrf
+<input type="hidden" name="campaign_id" value="{{ $campaign->campaign_id }}">
 <tr>
 <td>{{ $campaign->campaign_id }}</td>
 <td>{{ $campaign->campaign_name }}</td>
 <td>{{ $campaign->master }}</td>
+<td>
+	<select name="char_id" id="">
+	@foreach ($characters as $character)
+	<option value="{{$character->char_id}}">{{$character->char_name}}</option>
+	@endforeach
+	</select>
+</td>
 <td><input type="password" name="campaign_password"></td>
 <td><input type="submit" value="Jugar"></td>
 </tr>

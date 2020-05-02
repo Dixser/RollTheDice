@@ -19,7 +19,6 @@ class CreateCampaignTable extends Migration
             $table->string("campaign_name");
             $table->string("campaign_password");
             $table->string("chat_file");
-
         });
     }
 

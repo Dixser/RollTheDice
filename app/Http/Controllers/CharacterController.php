@@ -31,6 +31,7 @@ class CharacterController extends Controller
             "sex" => "required",
             "class" => "required",
             "religion" => "required",
+            "alignment" => "required",
             "hometown" => "required",
         ]);
 
@@ -40,6 +41,7 @@ class CharacterController extends Controller
         $character->race = request("race");
         $character->sex = request("sex");
         $character->class = request("class");
+        $character->alignment = request("alignment");
         $character->religion = request("religion");
         $character->hometown = request("hometown");
 
