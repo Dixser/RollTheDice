@@ -26,10 +26,11 @@
 <td>{{ $campaign->campaign_name }}</td>
 <td>{{ $campaign->master }}</td>
 <td>
-	<select name="char_id" id="">
-	@foreach ($characters as $character)
-	<option value="{{$character->char_id}}">{{$character->char_name}}</option>
-	@endforeach
+		<select name="char_id">
+		@foreach ($characters as $character)
+		<option value="{{$character->char_id}}">{{$character->char_name}}</option>
+		@endforeach
+
 	</select>
 </td>
 <td><input type="password" name="campaign_password"></td>

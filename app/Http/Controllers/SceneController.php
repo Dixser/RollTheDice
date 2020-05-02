@@ -18,6 +18,11 @@ class SceneController extends Controller
     }
     public function index()
     {
+        $scenes = Scene::where("scenes.user_id",Auth::user()->id)
+        ->join("campaigns","scenes.campaign_id","=","campaigns.campaign_id")
+        ->join("characters","characters.char_id","=","scenes.char_id")
+        ->select("campaigns.*","scenes.*","characters.char_name")->get();
+        return view("scene.index", ["scenes"=>$scenes ]);
     }
     public function create()
     {
@@ -46,7 +51,14 @@ class SceneController extends Controller
     }
     public function show($id)
     {
-        
+        if(Scene::where(
+            'user_id', '=', Auth::user()->id
+            )->where(
+            'campaign_id', '=', $id
+        )->first() == null){
+            return "No deberías estar aquí";
+        }
+        return "A jugar";
     }
 
     public function edit($id)

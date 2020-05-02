@@ -19,7 +19,7 @@ class CampaignController extends Controller
     public function index()
     {
         $campaigns = Campaign::all();
-        $characters = Character::all()->where("user_id",Auth::user()->id);
+        $characters = Character::where("user_id",Auth::user()->id);
         return view("campaign.index", ["campaigns" => $campaigns, "characters" => $characters]);
     }
     public function create()

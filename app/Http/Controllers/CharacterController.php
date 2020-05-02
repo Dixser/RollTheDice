@@ -44,7 +44,6 @@ class CharacterController extends Controller
         $character->alignment = request("alignment");
         $character->religion = request("religion");
         $character->hometown = request("hometown");
-
         $character->save();
         return redirect()->action('CharacterController@index');
     }
