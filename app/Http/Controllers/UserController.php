@@ -37,13 +37,18 @@ class UserController extends Controller
             "username" => "required",
             "password" => "required"
         ]);
-
-        $user = new User();
-        $user->username = request("username");
-        $user->password = bcrypt(request("password"));
-
-        $user->save();
-        return view("home");
+            
+        $user = User::where("username", $request->username)->first();
+        if($user==null){
+            $user = new User();
+            $user->username = request("username");
+            $user->password = bcrypt(request("password"));
+            $user->save();
+            return redirect("/");     
+        }
+        return back()
+        ->withErrors(["username" => "El usuario ya existe"])
+        ->withInput(request(["username"]));
     }
 
     /**

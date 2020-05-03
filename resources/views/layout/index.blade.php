@@ -103,6 +103,7 @@
 			<script src="{{ URL::asset('assets/js/breakpoints.min.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/util.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/main.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/rtd.js') }}"></script>
 
 	</body>
 </html>

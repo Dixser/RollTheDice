@@ -13,13 +13,13 @@
 
                         <p>Raza:
                         <select name="race" @error("race") class="error" @enderror value="{{old('race')}}">
-                            <option value="Elfo">Elfo</option>
-                            <option value="Enano">Enano</option>
-                            <option value="Gnomo">Gnomo</option>
-                            <option value="Humano">Humano</option>
-                            <option value="Mediano">Mediano</option>
-                            <option value="Orco">Orco</option>
-                            <option value="Trasgo">Trasgo</option>
+                            <option value="Humano">Humano (Sin modificadores)</option>
+                            <option value="Elfo">Elfo (+1 Carisma +1 Destreza -1 Constitución)</option>
+                            <option value="Enano">Enano (+1 Constitución -1 Carisma)</option>
+                            <option value="Gnomo">Gnomo (+1 Destreza +1 Inteligencia -1 Fuerza)</option>
+                            <option value="Mediano">Mediano (+1 Destreza -1 Fuerza)</option>
+                            <option value="Orco">Orco (+1 Fuerza +1 Constitución -1 Inteligencia)</option>
+                            <option value="Trasgo">Trasgo (+1 Destreza -1 Constitución)</option>
                         </select>
                         @error("race")
                             <p class="error">{{ $errors->first("race") }}</p>
@@ -45,11 +45,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <p>Sexo:
-                        <input type="text" @error("sex") class="error" @enderror name="sex" value="{{old('sex')}}"></p>
-                        @error("sex")
-                            <p class="error">{{ $errors->first("sex") }}</p>
-                        @enderror
+                        <p>
+							<input type="radio" id="male" name="sex" checked value="Masculino">
+							<label for="male">Masculino</label>
+							<input type="radio" id="female" name="sex" value="Femenino">
+							<label for="female">Femenino</label>
+                        </p>
 
                         <p>Clase:
                         <select name="class" @error("class") class="error" @enderror value="{{old('class')}}">

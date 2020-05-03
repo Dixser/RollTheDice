@@ -15,7 +15,7 @@ class CreateArmorTable extends Migration
     {
         Schema::create('armors', function (Blueprint $table) {
             $table->id("item_id");
-            $table->string("debility");
+            $table->integer("armour");
             $table->integer("penality");
             $table->string("body_part");
         });

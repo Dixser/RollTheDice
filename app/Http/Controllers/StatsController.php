@@ -39,4 +39,5 @@ class StatsController extends Controller
     {
         
     }
+
 }

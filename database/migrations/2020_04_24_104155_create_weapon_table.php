@@ -17,7 +17,6 @@ class CreateWeaponTable extends Migration
             $table->integer("item_id");
             $table->integer("hands");
             $table->integer("weapon_range");
-            $table->string("size");
             $table->string("weapon_type");
         });
     }

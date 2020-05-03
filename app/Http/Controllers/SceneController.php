@@ -34,7 +34,6 @@ class SceneController extends Controller
         $campaign = Campaign::where("campaign_id",request("campaign_id"))->first();
         
         if(request("campaign_password")==$campaign->campaign_password){
-            //$search = Scene::where("user_id",Auth::user()->id)->first();
             if(Scene::where("user_id",Auth::user()->id)->first() == null){
                 $scene = new Scene();
                 $scene->campaign_id = request("campaign_id");
@@ -44,8 +43,7 @@ class SceneController extends Controller
                 return "OK";
             }
             return "Mal";
-            
-                //return redirect("/campaign");
+
         }
         
     }

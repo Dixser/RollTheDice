@@ -13,13 +13,12 @@ class LoginController extends Controller
             "username" => "required",
             "password" => "required",
         ]);
-
-        $user = User::where("username", $request->username)->first();
-
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             return redirect('/');
         }
-            return $user;
+            return back()
+            ->withErrors(["username" => "Las credenciales no son válidas"])
+            ->withInput(request(["username"]));
         
     }
 }

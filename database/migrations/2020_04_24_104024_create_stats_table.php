@@ -14,7 +14,7 @@ class CreateStatsTable extends Migration
     public function up()
     {
         Schema::create('stats', function (Blueprint $table) {
-            $table->integer("char_id");
+            $table->integer("char_id")->unique();
             $table->integer("level");
             $table->integer("strength");
             $table->integer("dexerity");
