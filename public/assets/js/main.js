@@ -259,4 +259,24 @@
 
 			});
 
+			//PROYECTO
+			$("div.weapon").hide();
+			$("div.armor").hide();
+			$("div.consumable").hide();
+			$("input[name$='item_type']").click(function() {
+				$("div.weapon").hide();
+				$("div.armor").hide();
+				$("div.consumable").hide();
+				$("div."+$(this).val()).toggle();
+				
+			});
+
+
+
+
+
+
+
+
+
 })(jQuery);

@@ -17,8 +17,7 @@ class CreateItemTable extends Migration
             $table->increments("item_id");
             $table->string("item_name");
             $table->string("item_type");
-            $table->integer("price");
-            $table->integer("campaign_id");
+            $table->integer("item_price");
         });
     }
 

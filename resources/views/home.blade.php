@@ -70,11 +70,11 @@
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" height="220px" alt="" /></a>
-											<h3>Armamento</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<a href="/item" class="image"><img src="images/pic02.jpg" height="220px" alt="" /></a>
+											<h3>Armería</h3>
+											<p>¡Ármate hasta los dientes o pontelos largos viendo equipo legendario solo apto para los aventureros más experimentados!</p>
 											<ul class="actions">
-												<li><a href="#" class="button">Leer más</a></li>
+												<li><a href="/item" class="button">Leer más</a></li>
 											</ul>
 										</article>
 										<article>
@@ -82,7 +82,7 @@
 											<h3>Brujos</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 											<ul class="actions">
-												<li><a href="#" class="button">Leer más</a></li>
+												<li><a href="#" class="button">Ver más</a></li>
 											</ul>
 										</article>
 										

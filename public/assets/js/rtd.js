@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function($) {
     $("div.weapon").hide();
     $("div.armor").hide();
     $("div.consumable").hide();
@@ -6,4 +6,4 @@ $(document).ready(function() {
         var test = $(this).val();
 
     });
-});
+})(jQuery);

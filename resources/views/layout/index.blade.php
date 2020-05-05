@@ -22,7 +22,7 @@
 									<ul class="icons">
 										@auth
 										<li><span>{{Auth::user()->username}}</span></li>
-										<li><a href="/logout" class="button small primary">Cerrar Sesión</a></li>
+										<li><a href="/logout" class="button small primary"><i class="fas fa-power-off"></i> Cerrar Sesión</a></li>
 										@else
 										<li><a href="/user/create" class="button big">Registro</a></li>
 										<li><a href="/login" class="button big primary">Iniciar Sesión</a></li>
@@ -79,10 +79,8 @@
 										<li>
 											<span class="opener">Equipo</span>
 											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
+												<li><a href="/item">Armería</a></li>
+												<li><a href="/item/create">Crear Equipo</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -103,7 +101,7 @@
 			<script src="{{ URL::asset('assets/js/breakpoints.min.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/util.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/main.js') }}"></script>
-			<script src="{{ URL::asset('assets/js/rtd.js') }}"></script>
+			<script src="{{ asset('assets/js/rtd.js') }}"></script>
 
 	</body>
 </html>

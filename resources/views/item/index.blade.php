@@ -5,16 +5,74 @@
 	<h1>Equipo</h1>
 	<p>Todo lo que puedas necesitar para vencer</p>
 </header>
-<p>Bienvenido a nuestra sección de campañas, aquí podrás buscar partidas existentes y unirte con un personaje creado previamente. Si aun no tienes un personaje creado, pulsa <a href="/character/create">aquí</a>.</p>
-<a href="/campaign/create" class="button big primary">+ Crear Campaña</a>
-<br><br>
+<p>Afiladas espadas, armaduras impenetrables, componentes mágicos... ¡Vencer al mal no es sencillo, pero llevar encima un arma fiable, una armadura adecuada para tu estilo de juego y un par de pociones de sobra siempre ayuda!</p>
+	<a href="/item/create" class="button big primary">+ Crear Objeto</a>
+	<br><br>
 <h2>Armas</h2>
 <table>
+	<tr>
+		<th>Nombre</th>
+		<th>Tipo</th>
+		<th>Daño</th>
+		<th>Empuñadura</th>
+		<th>Alcance</th>
+		<th>Precio</th>
+	</tr>
+	@foreach($weapons as $weapon)
+	<tr>
+		<td>{{ $weapon->item_name }}</td>
+		<td>{{ $weapon->weapon_type }}</td>
+		<td>{{ $weapon->weapon_damage }}</td>
+		<td>{{ $weapon->weapon_hands }}</td>
+		<td>
+			@if($weapon->weapon_range!=0)
+			{{ $weapon->weapon_range }} metros
+			@else
+			Cuerpo a Cuerpo
+			@endif
+		</td>
+		<td>{{ $weapon->item_price }} monedas</td>
+	</tr>
+	@endforeach
 </table>
 <h2>Armaduras</h2>
 <table>
+	<tr>
+		<th>Nombre</th>
+		<th>Tipo</th>
+		<th>Armadura</th>
+		<th>Penalización</th>
+		<th>Precio</th>
+	</tr>
+	@foreach($armors as $armor)
+	<tr>
+		<td>{{ $armor->item_name }}</td>
+		<td>{{ $armor->body_part }}</td>
+		<td>{{ $armor->armour }}</td>
+		<td>
+			@if($armor->penality!=0)
+			{{ $armor->penality }}
+			@else
+			Sin penalización
+			@endif
+		</td>
+		<td>{{ $armor->item_price }} monedas</td>
+	</tr>
+	@endforeach
 </table>
 <h2>Objetos consumibles</h2>
 <table>
+	<tr>
+		<th>Nombre</th>
+		<th>Descripción</th>
+		<th>Precio</th>
+	</tr>
+	@foreach($consumables as $consumable)
+	<tr>
+		<td>{{ $consumable->item_name }}</td>
+		<td>{{ $consumable->description }}</td>
+		<td>{{ $consumable->item_price }} monedas</td>
+	</tr>
+	@endforeach
 </table>
 @endsection
