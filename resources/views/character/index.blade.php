@@ -8,7 +8,7 @@
 <a href="/character/create" class="button big primary">+ Crear Personaje</a>
 <br><br>
 @foreach ($characters as $character)
-<h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}</h3>
+<h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}  ({{$character->alignment}})</h3>
 <span>Información</span>
 <table>
 <tr>

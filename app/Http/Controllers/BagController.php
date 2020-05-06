@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Bag;
 class BagController extends Controller
 {
 
@@ -22,7 +22,16 @@ class BagController extends Controller
 
     public function store(Request $request)
     {
-
+        request()->validate([
+            "char_id" => "required",
+            "item_id" => "required",
+        ]);
+        $bag = new Bag();
+        $bag->char_id = request("char_id");
+        $bag->item_id = request("item_id");
+        $bag->save();
+        $id = request("campaign_id");
+        return redirect("/master/$id");
     }
     public function show($id)
     {

@@ -25,9 +25,10 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 Route::get("/master","CampaignController@master");
+Route::get("/master/{scene}","SceneController@master");
 
 Route::resource('/armor', 'ArmorController');
-Route::resource('/bag', 'UserController');
+Route::resource('/bag', 'BagController');
 Route::resource('/campaign', 'CampaignController');
 Route::resource('/character', 'CharacterController');
 Route::resource('/consumable', 'ConsumableController');

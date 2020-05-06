@@ -85,7 +85,7 @@
                             <p class="error">{{ $errors->first("hometown") }}</p>
                         @enderror
                         <br>
-                        <input type="submit" name="submit" value="Registrarse">
+                        <input type="submit" name="submit" value="Crear Personaje">
                     </div>
                     </form>
             </div>

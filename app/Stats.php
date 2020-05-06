@@ -14,7 +14,7 @@ class Stats extends Model
             case "Arcano":
             case "Asesino":
             case "Juglar":
-            case "Ladron":
+            case "Ladrón":
             case "Trovador":
                 return 6;
             case "Clérigo":

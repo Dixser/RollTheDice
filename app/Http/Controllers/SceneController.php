@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Campaign;
 use App\Character;
 use App\Scene;
+use App\Item;
 use Auth;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\CampaignController;
@@ -40,23 +41,32 @@ class SceneController extends Controller
                 $scene->char_id = request("char_id");
                 $scene->user_id = Auth::user()->id;
                 $scene->save();
-                return "OK";
+                return redirect()->action("CampaignController@index");
             }
             return "Mal";
-
+            
         }
+        return "Mal";
         
     }
     public function show($id)
     {
-        if(Scene::where(
+        $validation = Scene::where(
             'user_id', '=', Auth::user()->id
             )->where(
             'campaign_id', '=', $id
-        )->first() == null){
+        )->first();
+        if($validation == null){
             return "No deberías estar aquí";
         }
-        return "A jugar";
+
+        $character = Character::where("char_id",$validation->char_id)->first();
+        $stats = $character->stats();
+        $weapons = $character->weapons();
+        $armors = $character->armors();
+        $consumables = $character->consumables();
+        return view("scene.game",["character"=>$character, "stats"=>$stats, "weapons" => $weapons,"armors" => $armors,"consumables" => $consumables, ]);
+
     }
 
     public function edit($id)
@@ -70,5 +80,35 @@ class SceneController extends Controller
     public function destroy($id)
     {
         
+    }
+    public function master($id)
+    {
+        $validation = Campaign::where(
+            'campaign_id', '=', $id
+        )->first();
+        if($validation->master != Auth::user()->username){
+            return "No deberías estar aquí";
+        }
+        $characters = Scene::where("campaign_id",$id)
+        ->join("characters","characters.char_id","=","scenes.char_id")
+        ->get();
+        $items = Item::all();
+        $data = array();
+        foreach ($characters as $c) {
+            $char_data = array();
+            $character = Character::where("char_id",$c->char_id)->first();
+            array_push($char_data,$character);
+            $stats = $character->stats();
+            array_push($char_data,$stats);
+            $weapons = $character->weapons();
+            array_push($char_data,$weapons);
+            $armors = $character->armors();
+            array_push($char_data,$armors);
+            $consumables = $character->consumables();
+            array_push($char_data,$consumables);
+            array_push($data,$char_data);
+        }
+
+        return view("master.game",[ "data" => $data, "items" => $items, "characters" => $characters, "id" => $id]);
     }
 }

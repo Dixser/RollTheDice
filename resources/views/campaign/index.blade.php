@@ -28,7 +28,7 @@
 <td>
 		<select name="char_id">
 		@foreach ($characters as $character)
-		<option value="{{$character->char_id}}">{{$character->char_name}}</option>
+		<option value="{{$character->char_id}}">{{$character->char_name}}, {{$character->class}} {{$character->race}}</option>
 		@endforeach
 
 	</select>

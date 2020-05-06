@@ -270,6 +270,9 @@
 				$("div."+$(this).val()).toggle();
 				
 			});
+			$(".char_hide").click(function(){
+				$(this).next().toggle();
+			});
 
 
 

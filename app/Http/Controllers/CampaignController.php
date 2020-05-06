@@ -18,8 +18,8 @@ class CampaignController extends Controller
 
     public function index()
     {
-        $campaigns = Campaign::all();
-        $characters = Character::where("user_id",Auth::user()->id);
+        $campaigns = Campaign::select("*")->where("master","!=",Auth::user()->username)->get();
+        $characters = Character::where("user_id",Auth::user()->id)->get();
         return view("campaign.index", ["campaigns" => $campaigns, "characters" => $characters]);
     }
     public function create()
@@ -42,7 +42,7 @@ class CampaignController extends Controller
         
 
         $campaign->save();
-        return redirect()->action('CampaignController@index');
+        return redirect()->action('CampaignController@master');
     }
     public function show($id)
     {
