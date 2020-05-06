@@ -4,47 +4,54 @@
     @foreach($data as $character)
     <h2 class="char_hide">{{$character[0]->char_name}}</h2>
     <div class="character_info">
+        <form action="/stats/{{$character[0]->char_id}}" method="post">
+        @csrf
+        @method("PUT")
+        <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
+        <input type="hidden" name="campaign_id" value="{{$id}}">
         <table>
             <tr>
                 <th>Nivel</th>
-                <td>{{$character[1]->level}}</td>
+                <td><input type="number" name="level" value="{{$character[1]->level}}"></td>
             </tr>
             <tr>
                 <th>Salud</th>
-                <td>{{$character[1]->current_health}}/{{$character[1]->max_health}}</td>
+                <td><input type="number" name="current_health" value="{{$character[1]->current_health}}">/<input type="number" name="max_health" value="{{$character[1]->max_health}}"></td>
             </tr>
             <tr>
                 <th>Oro</th>
-                <td>{{$character[1]->gold}}</td>
+                <td><input type="number" name="gold" value="{{$character[1]->gold}}"></td>
             </tr>
         </table>
 
         <table>
             <tr>
                 <th>Fuerza</th>
-                <td>{{$character[1]->strength}}</td>
+                <td><input type="number" name="strength" value="{{$character[1]->strength}}"></td>
             </tr>
             <tr>
                 <th>Destreza</th>
-                <td>{{$character[1]->dexerity}}</td>
+                <td><input type="number" name="dexerity" value="{{$character[1]->dexerity}}"></td>
             </tr>
             <tr>
                 <th>Constitución</th>
-                <td>{{$character[1]->stamina}}</td>
+                <td><input type="number" name="stamina" value="{{$character[1]->stamina}}"></td>
             </tr>
             <tr>
                 <th>Inteligencia</th>
-                <td>{{$character[1]->intelligence}}</td>
+                <td><input type="number" name="intelligence" value="{{$character[1]->intelligence}}"></td>
             </tr>
             <tr>
                 <th>Sabiduría</th>
-                <td>{{$character[1]->wisdom}}</td>
+                <td><input type="number" name="wisdom" value="{{$character[1]->wisdom}}"></td>
             </tr>
             <tr>
                 <th>Carisma</th>
-                <td>{{$character[1]->charisma}}</td>
+                <td><input type="number" name="charisma" value="{{$character[1]->charisma}}"></td>
             </tr>
         </table>
+        <input type="submit" value="Guardar Cambios">
+        </form>
         <h2>Armas</h2>
         <table>
         	<tr>
@@ -54,6 +61,7 @@
         		<th>Empuñadura</th>
         		<th>Alcance</th>
         		<th>Precio</th>
+        		<th></th>
         	</tr>
         	@foreach($character[2] as $weapon)
         	<tr>
@@ -69,6 +77,16 @@
         			@endif
         		</td>
         		<td>{{ $weapon->item_price }} monedas</td>
+                <td>	
+                    <form action="/bag/{{$weapon->item_id}}" method="POST">
+			            @csrf
+			            @method("DELETE")
+                        <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
+                        <input type="hidden" name="campaign_id" value="{{$id}}">
+			            <button type="submit" class="fas fa-times-circle">
+			            </button>
+			        </form>
+		        </td>
         	</tr>
         	@endforeach
         </table>
@@ -80,6 +98,7 @@
         		<th>Armadura</th>
         		<th>Penalización</th>
         		<th>Precio</th>
+        		<th></th>
         	</tr>
         	@foreach($character[3] as $armor)
         	<tr>
@@ -94,6 +113,16 @@
         			@endif
         		</td>
         		<td>{{ $armor->item_price }} monedas</td>
+                <td>	
+                    <form action="/bag/{{$armor->item_id}}" method="POST">
+			            @csrf
+			            @method("DELETE")
+                        <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
+                        <input type="hidden" name="campaign_id" value="{{$id}}">
+			            <button type="submit" class="fas fa-times-circle">
+			            </button>
+			        </form>
+		        </td>
         	</tr>
         	@endforeach
         </table>
@@ -103,12 +132,23 @@
         		<th>Nombre</th>
         		<th>Descripción</th>
         		<th>Precio</th>
+        		<th></th>
         	</tr>
         	@foreach($character[4] as $consumable)
         	<tr>
         		<td>{{ $consumable->item_name }}</td>
         		<td>{{ $consumable->description }}</td>
         		<td>{{ $consumable->item_price }} monedas</td>
+                <td>	
+                    <form action="/bag/{{$consumable->item_id}}" method="POST">
+			            @csrf
+			            @method("DELETE")
+                        <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
+                        <input type="hidden" name="campaign_id" value="{{$id}}">
+			            <button type="submit" class="fas fa-times-circle">
+			            </button>
+			        </form>
+		        </td>
         	</tr>
         	@endforeach
         </table>

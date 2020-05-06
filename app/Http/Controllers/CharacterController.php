@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Character;
 use App\Stats;
+use App\Scene;
+use App\Bag;
 use Auth;
 class CharacterController extends Controller
 {
@@ -50,7 +52,7 @@ class CharacterController extends Controller
         $character->save();
 
         $stats = new Stats();
-        $stats->char_id = $character->id;
+        $stats->char_id = $character->char_id;
         $stats->level = 1;
         $stats->strength = 8;
         $stats->dexerity = 8;
@@ -72,18 +74,34 @@ class CharacterController extends Controller
     {
 
     }
-
     public function edit($id)
     {
-        
+        $character = Character::where("user_id",Auth::user()->id)->where("char_id",$id)->first();
+        if($character==null){
+            return redirect("/");
+        }
+        return view("character.edit",["character" => $character]);
     }
     public function update(Request $request, $id)
     {
-        
+        request()->validate([
+            "char_name" => "required",
+            "religion" => "required",
+            "hometown" => "required",
+        ]);
+        $character = Character::where("char_id",$id)->first();
+        $character->char_name = request("char_name");
+        $character->religion = request("religion");
+        $character->hometown = request("hometown");
+        $character->save();
+        return redirect("/character");
     }
     public function destroy($id)
     {
-        
+        Character::where("char_id",$id)->delete();
+        Stats::where("char_id",$id)->delete();
+        Scene::where("char_id",$id)->delete();
+        Bag::where("char_id",$id)->delete();
     }
 
 }

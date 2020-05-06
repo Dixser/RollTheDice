@@ -41,12 +41,12 @@ class SceneController extends Controller
                 $scene->char_id = request("char_id");
                 $scene->user_id = Auth::user()->id;
                 $scene->save();
-                return redirect()->action("CampaignController@index");
+                return redirect("/scene");
             }
-            return "Mal";
+            return redirect("/");
             
         }
-        return "Mal";
+        return redirect("/");
         
     }
     public function show($id)
@@ -57,7 +57,7 @@ class SceneController extends Controller
             'campaign_id', '=', $id
         )->first();
         if($validation == null){
-            return "No deberías estar aquí";
+            return redirect("/");
         }
 
         $character = Character::where("char_id",$validation->char_id)->first();
@@ -108,7 +108,6 @@ class SceneController extends Controller
             array_push($char_data,$consumables);
             array_push($data,$char_data);
         }
-
         return view("master.game",[ "data" => $data, "items" => $items, "characters" => $characters, "id" => $id]);
     }
 }

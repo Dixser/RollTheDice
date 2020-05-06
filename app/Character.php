@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Character extends Model
 {
     public $timestamps = false;
+    protected $primaryKey = 'char_id';
 
     public function stats(){
         return Stats::where("char_id",$this->char_id)->first();

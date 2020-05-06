@@ -29,11 +29,23 @@ class StatsController extends Controller
 
     public function edit($id)
     {
-        
+
     }
     public function update(Request $request, $id)
     {
-        
+        $stats = Stats::where("char_id",request("char_id"))->first();
+        $campaign_id = request("campaign_id");
+        $stats->level = request("level");
+        $stats->current_health = request("current_health");
+        $stats->max_health = request("max_health");
+        $stats->strength = request("strength");
+        $stats->dexerity = request("dexerity");
+        $stats->stamina = request("stamina");
+        $stats->wisdom = request("wisdom");
+        $stats->intelligence = request("intelligence");
+        $stats->charisma = request("charisma");
+        $stats->save();
+        return redirect("/master/$campaign_id");
     }
     public function destroy($id)
     {

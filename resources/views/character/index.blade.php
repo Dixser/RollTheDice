@@ -8,7 +8,15 @@
 <a href="/character/create" class="button big primary">+ Crear Personaje</a>
 <br><br>
 @foreach ($characters as $character)
-<h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}  ({{$character->alignment}})</h3>
+<h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}  ({{$character->alignment}}) </h3>
+<h2>
+    <a href="/character/{{$character->char_id}}/edit"><i class="fas fa-edit"></i></a>
+		<form action="/character/{{$character->char_id}}" method="POST">
+		@csrf
+		@method("DELETE")
+		<button type="submit" class="fas fa-times-circle"></button>
+	</form>
+</h2>
 <span>Información</span>
 <table>
 <tr>

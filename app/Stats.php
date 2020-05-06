@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stats extends Model
 {
+    protected $primaryKey = 'char_id';
     public $timestamps = false;
     public function getHP($class){
         switch($class){

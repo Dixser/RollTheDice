@@ -2,10 +2,10 @@
 @section("content")
 <header>
 <br>
-	<h1>Tus Campañas</h1>
-	<p>¡Busca partidas en linea y juega ahora!</p>
+	<h1>Tus Partidas</h1>
+	<p>¡Accede a tus partidas aquí!</p>
 </header>
-<p>Bienvenido a nuestra sección de campañas, aquí podrás buscar partidas existentes y unirte con un personaje creado previamente. Si aun no tienes un personaje creado, pulsa <a href="/character/create">aquí</a>.</p>
+<p>Entra a una partida a la cual hayas accedido previamente, si aún no te has registrado en ninguna partida pulsa <a href="/campaign">aquí</a>.</p>
 <br><br>
 <table>
 <tr>

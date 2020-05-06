@@ -51,15 +51,33 @@ class CampaignController extends Controller
 
     public function edit($id)
     {
-        
+        $campaign = Campaign::where("master",Auth::user()->username)->where("campaign_id",$id)->first();
+        if($campaign==null){
+            return redirect("/");
+        }
+        return view("campaign.edit",["campaign" => $campaign]);
     }
     public function update(Request $request, $id)
     {
-        
+        request()->validate([
+            "campaign_name" => "required",
+            "campaign_password" => "required",
+        ]);
+        $campaign = Campaign::where("campaign_id",$id)->first();
+        $campaign->campaign_name = request("campaign_name");
+        $campaign->campaign_password = request("campaign_password");
+        $campaign->save();
+        return redirect("/master");
     }
     public function destroy($id)
     {
-        
+        $campaign = Campaign::where("campaign_id",$id)->first();
+        $campaign->delete();
+        $scene = Scene::where("campaign_id",$id)->get();
+        foreach($scene as $char){
+            $char->delete();
+        }
+        return redirect("/master");
     }
 
     public function master()

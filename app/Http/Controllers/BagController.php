@@ -46,8 +46,11 @@ class BagController extends Controller
     {
         
     }
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        
+        $campaign_id = request("campaign_id");
+        $char_id = request("char_id");
+        Bag::where("char_id",$char_id)->where("item_id",$id)->delete();
+        return redirect("/master/$campaign_id");
     }
 }

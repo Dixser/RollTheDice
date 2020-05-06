@@ -55,7 +55,7 @@
 											<span class="opener">Campañas</span>
 											<ul>
 												<li><a href="/campaign">Ver Campañas</a></li>
-												<li><a href="/scene">Mis campañas</a></li>
+												<li><a href="/scene">Mis partidas</a></li>
 												<li><a href="/campaign/create">Crear campaña</a></li>
 												<li><a href="/master">Panel de Master</a></li>
 											</ul>

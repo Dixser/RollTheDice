@@ -17,6 +17,8 @@
 		<th>Empuñadura</th>
 		<th>Alcance</th>
 		<th>Precio</th>
+		<th></th>
+		<th></th>
 	</tr>
 	@foreach($weapons as $weapon)
 	<tr>
@@ -32,6 +34,13 @@
 			@endif
 		</td>
 		<td>{{ $weapon->item_price }} monedas</td>
+		<td> <a href="/item/{{$weapon->item_id}}"><i class="fas fa-edit"></i></a></td>
+    	<td>	<form action="/item/{{$weapon->item_id}}" method="POST">
+			@csrf
+			@method("DELETE")
+			<button type="submit" class="fas fa-times-circle"></button>
+			</form>
+		</td>
 	</tr>
 	@endforeach
 </table>
@@ -43,6 +52,8 @@
 		<th>Armadura</th>
 		<th>Penalización</th>
 		<th>Precio</th>
+		<th></th>
+		<th></th>
 	</tr>
 	@foreach($armors as $armor)
 	<tr>
@@ -57,6 +68,13 @@
 			@endif
 		</td>
 		<td>{{ $armor->item_price }} monedas</td>
+		<td><a href="/item/{{$armor->item_id}}"><i class="fas fa-edit"></i></a></td>
+    	<td>	<form action="/item/{{$armor->item_id}}" method="POST">
+			@csrf
+			@method("DELETE")
+			<button type="submit" class="fas fa-times-circle"></button>
+			</form>
+	</td>
 	</tr>
 	@endforeach
 </table>
@@ -66,12 +84,22 @@
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Precio</th>
+		<th></th>
+		<th></th>
 	</tr>
 	@foreach($consumables as $consumable)
 	<tr>
 		<td>{{ $consumable->item_name }}</td>
 		<td>{{ $consumable->description }}</td>
 		<td>{{ $consumable->item_price }} monedas</td>
+		<td> <a href="/item/{{$consumable->item_id}}"><i class="fas fa-edit"></i></a></td>
+    	<td>	<form action="/item/{{$consumable->item_id}}" method="POST">
+			@csrf
+			@method("DELETE")
+			<button type="submit" class="fas fa-times-circle">
+			</button>
+			</form>
+		</td>
 	</tr>
 	@endforeach
 </table>
