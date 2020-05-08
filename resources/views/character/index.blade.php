@@ -11,12 +11,14 @@
 <h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}  ({{$character->alignment}}) </h3>
 <h2>
     <a href="/character/{{$character->char_id}}/edit"><i class="fas fa-edit"></i></a>
-		<form action="/character/{{$character->char_id}}" method="POST">
-		@csrf
-		@method("DELETE")
-		<button type="submit" class="fas fa-times-circle"></button>
-	</form>
 </h2>
+<form action="/character/{{$character->char_id}}" method="POST">
+@csrf
+@method("DELETE")
+<button type="submit" class="fas fa-times-circle"></button>
+</form>
+<a href="/character/{{$character->char_id}}/pdf">Ver pdf</a>
+<br>
 <span>Información</span>
 <table>
 <tr>

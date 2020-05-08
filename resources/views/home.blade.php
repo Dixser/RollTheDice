@@ -9,9 +9,11 @@
 											<p>A free and fully responsive site template</p>
 										</header>
 										<p>Juega a Rol Online con tus amigos, ahorra hojas de personaje y preocupate solo de disfrutar la partida. ¡En unos minutos tendrás lista tu cuenta y tu personaje para probar esta experiencia de juego!</p>
+										@guest
 										<ul class="actions">
 											<li><a href="/user/create" class="button big">¡Empieza ya!</a></li>
 										</ul>
+										@endguest
 									</div>
 									<span class="image object">
 										<img src="images/pic10.jpg" alt="" />

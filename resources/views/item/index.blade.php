@@ -6,7 +6,9 @@
 	<p>Todo lo que puedas necesitar para vencer</p>
 </header>
 <p>Afiladas espadas, armaduras impenetrables, componentes mágicos... ¡Vencer al mal no es sencillo, pero llevar encima un arma fiable, una armadura adecuada para tu estilo de juego y un par de pociones de sobra siempre ayuda!</p>
+	@if(Auth::user()->user_type=="admin")
 	<a href="/item/create" class="button big primary">+ Crear Objeto</a>
+	@endif
 	<br><br>
 <h2>Armas</h2>
 <table>
@@ -17,8 +19,10 @@
 		<th>Empuñadura</th>
 		<th>Alcance</th>
 		<th>Precio</th>
+		@if(Auth::user()->user_type=="admin")
 		<th></th>
 		<th></th>
+		@endif
 	</tr>
 	@foreach($weapons as $weapon)
 	<tr>
@@ -34,6 +38,7 @@
 			@endif
 		</td>
 		<td>{{ $weapon->item_price }} monedas</td>
+		@if(Auth::user()->user_type=="admin")
 		<td> <a href="/item/{{$weapon->item_id}}"><i class="fas fa-edit"></i></a></td>
     	<td>	<form action="/item/{{$weapon->item_id}}" method="POST">
 			@csrf
@@ -41,6 +46,7 @@
 			<button type="submit" class="fas fa-times-circle"></button>
 			</form>
 		</td>
+		@endif
 	</tr>
 	@endforeach
 </table>
@@ -52,8 +58,10 @@
 		<th>Armadura</th>
 		<th>Penalización</th>
 		<th>Precio</th>
+		@if(Auth::user()->user_type=="admin")
 		<th></th>
 		<th></th>
+		@endif
 	</tr>
 	@foreach($armors as $armor)
 	<tr>
@@ -68,13 +76,15 @@
 			@endif
 		</td>
 		<td>{{ $armor->item_price }} monedas</td>
+		@if(Auth::user()->user_type=="admin")
 		<td><a href="/item/{{$armor->item_id}}"><i class="fas fa-edit"></i></a></td>
     	<td>	<form action="/item/{{$armor->item_id}}" method="POST">
 			@csrf
 			@method("DELETE")
 			<button type="submit" class="fas fa-times-circle"></button>
 			</form>
-	</td>
+		</td>
+		@endif
 	</tr>
 	@endforeach
 </table>
@@ -84,14 +94,17 @@
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Precio</th>
+		@if(Auth::user()->user_type=="admin")
 		<th></th>
 		<th></th>
+		@endif
 	</tr>
 	@foreach($consumables as $consumable)
 	<tr>
 		<td>{{ $consumable->item_name }}</td>
 		<td>{{ $consumable->description }}</td>
 		<td>{{ $consumable->item_price }} monedas</td>
+		@if(Auth::user()->user_type=="admin")
 		<td> <a href="/item/{{$consumable->item_id}}"><i class="fas fa-edit"></i></a></td>
     	<td>	<form action="/item/{{$consumable->item_id}}" method="POST">
 			@csrf
@@ -100,6 +113,7 @@
 			</button>
 			</form>
 		</td>
+		@endif
 	</tr>
 	@endforeach
 </table>

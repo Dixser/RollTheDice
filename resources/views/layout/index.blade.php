@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-<!DOCTYPE HTML>
-<html>
 	<head>
 		<title>Roll the Dice</title>
 		<meta charset="utf-8" />
@@ -68,6 +66,9 @@
 											</ul>
 										</li>
 										<li>
+											<a href="/item">Armería</a>
+										</li>
+										<li>
 											<span class="opener">Razas</span>
 											<ul>
 												<li><a href="#">Lorem Dolor</a></li>
@@ -76,17 +77,21 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li>
-											<span class="opener">Equipo</span>
-											<ul>
-												<li><a href="/item">Armería</a></li>
-												<li><a href="/item/create">Crear Equipo</a></li>
-											</ul>
-										</li>
 									</ul>
 								</nav>
 							<!-- Footer -->
 								<footer id="footer">
+									<div class="mini-posts">
+										<article>
+											<img class="image slider" src="images/slider1.jpg" alt="" />
+											<img class="image slider" src="images/slider2.jpg" alt="" />
+											<img class="image slider" src="images/slider3.jpg" alt="" />
+											<img class="image slider" src="images/slider4.jpg" alt="" />
+										</article>
+										<button class="prevImage">Anterior</button>
+										<button class="nextImage">Siguiente</button>
+									</div>
+									<br>
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
 
@@ -101,7 +106,7 @@
 			<script src="{{ URL::asset('assets/js/breakpoints.min.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/util.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/main.js') }}"></script>
-			<script src="{{ asset('assets/js/rtd.js') }}"></script>
+			<script src="{{ URL::asset('assets/js/rtd.js') }}"></script>
 
 	</body>
 </html>

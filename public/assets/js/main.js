@@ -263,17 +263,73 @@
 			$("div.weapon").hide();
 			$("div.armor").hide();
 			$("div.consumable").hide();
-			$("input[name$='item_type']").click(function() {
+			$("input[name$='item_type']").on("change",(function() {
 				$("div.weapon").hide();
 				$("div.armor").hide();
 				$("div.consumable").hide();
 				$("div."+$(this).val()).toggle();
 				
-			});
+			}));
 			$(".char_hide").click(function(){
 				$(this).next().toggle();
 			});
+			$(".roll").on("submit",function(event){
+				event.preventDefault();
+				data = $(this).serialize();
+				data = data.split("&");
+				for(i=1;i<data.length;i++){
+					data[i] = data[i].split("=");
+				}
+				roll = Math.floor((Math.random() * data[2][1]) + 1);
+				result = roll + parseInt(data[3][1]) + parseInt(data[4][1]) - parseInt(data[5][1]);
+				if(result<0){
+					result="<strong class='failed'> NO SUPERADO ("+result+")";
+				}else{
+					result="<strong class='passed'> SUPERADO ("+result+")";
+				}
+				var fecha = new Date();
+				horaTirada="["+fecha.getDay()+"/"
+				+fecha.getMonth()+"/"
+				+fecha.getFullYear()+" "
+				+fecha.getHours()+":"
+				+fecha.getMinutes()+":"
+				+fecha.getSeconds()+"]"
 
+				texto = horaTirada+
+				" Tirada de D"+data[2][1]+" con resultado "+roll+
+				" (Mod: "+data[4][1]+
+				" Atr: +"+data[3][1]+
+				") Requisito: "+data[5][1]+
+				result+"<br>"
+
+				$("."+data[1][1]+"_result").append(texto);
+			})
+			
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			$(".nextImage").click(function(){
+				slideIndex+=1;
+				showSlides(slideIndex);
+			});
+			$(".prevImage").click(function(){
+				slideIndex-=1;
+				showSlides(slideIndex);
+			});
+
+			function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("slider");
+			  if (n > slides.length) {slideIndex = 1}
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				  //slides[i].style.display = "none";
+				  $(".slider").eq(i).hide();
+			  }
+			  $(".slider").eq(slideIndex-1).fadeIn("slow");
+			  //slides[slideIndex-1].style.display = "block";
+			  
+			}
 
 
 

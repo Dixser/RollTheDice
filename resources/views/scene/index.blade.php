@@ -9,7 +9,6 @@
 <br><br>
 <table>
 <tr>
-	<th>ID</th>
 	<th>Nombre de la campaña</th>
 	<th>Master</th>
 	<th>Personaje</th>
@@ -17,7 +16,6 @@
 </tr>
 @foreach ($scenes as $scene)
 <tr>
-	<td>{{ $scene->campaign_id }}</td>
 	<td>{{ $scene->campaign_name }}</td>
 	<td>{{ $scene->master }}</td>
 	<td>{{ $scene->char_name }}</td>

@@ -36,6 +36,8 @@ class StatsController extends Controller
         $stats = Stats::where("char_id",request("char_id"))->first();
         $campaign_id = request("campaign_id");
         $stats->level = request("level");
+        $stats->gold = request("gold");
+        $stats->armor = request("armor");
         $stats->current_health = request("current_health");
         $stats->max_health = request("max_health");
         $stats->strength = request("strength");

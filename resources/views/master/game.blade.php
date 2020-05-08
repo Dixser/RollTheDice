@@ -22,6 +22,10 @@
                 <th>Oro</th>
                 <td><input type="number" name="gold" value="{{$character[1]->gold}}"></td>
             </tr>
+            <tr>
+                <th>Armadura</th>
+                <td><input type="number" name="armor" value="{{$character[1]->armor}}"></td>
+            </tr>
         </table>
 
         <table>
@@ -106,11 +110,11 @@
         		<td>{{ $armor->body_part }}</td>
         		<td>{{ $armor->armour }}</td>
         		<td>
-        			@if($armor->penality!=0)
-        			{{ $armor->penality }}
-        			@else
-        			Sin penalización
-        			@endif
+    			    @if($armor->penality>0)
+    			    +{{ $armor->penality }}
+    			    @else
+    			    {{ $armor->penality }}
+    			    @endif
         		</td>
         		<td>{{ $armor->item_price }} monedas</td>
                 <td>	
@@ -153,6 +157,25 @@
         	@endforeach
         </table>
     </div>
+    <h3 class="char_hide">Realizar tirada para {{$character[0]->char_name}}</h3>
+    <form action="/chat" class="roll" method="POST">
+        @csrf
+        <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
+        <p>Tipo de Dado: <input type="number" name="dice" min="2" value="20"> <span>caras</span></p>
+        <select name="stat">
+            <option value="0">Sin atributo (0)</option>
+            <option value="{{$character[1]->strength}}">Fuerza ({{$character[1]->strength}})</option>
+            <option value="{{$character[1]->dexerity}}">Destreza ({{$character[1]->dexerity}})</option>
+            <option value="{{$character[1]->stamina}}">Constitución ({{$character[1]->stamina}})</option>
+            <option value="{{$character[1]->intelligence}}">Inteligencia ({{$character[1]->intelligence}})</option>
+            <option value="{{$character[1]->wisdom}}">Sabiduría ({{$character[1]->wisdom}})</option>
+            <option value="{{$character[1]->charisma}}">Carisma ({{$character[1]->charisma}})</option>
+        </select>
+        <p>Modificador: <input type="number" name="modifier" value="0"></p>
+        <p>Requisito para superar: <input type="number" name="score" value="15"></p>
+        <p class="{{$character[0]->char_id}}_result"></p>
+        <input type="submit" value="Tirar" name="roll" class="roll">
+        </form>
     @endforeach
     <h1>Gestión de equipo</h1>
     <form action="/bag" method="POST">
@@ -173,4 +196,7 @@
         <input type="submit" name="submit" value="Dar objeto">
     </form>
 
+
+
 @endsection
+

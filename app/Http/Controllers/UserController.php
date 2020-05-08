@@ -43,8 +43,9 @@ class UserController extends Controller
             $user = new User();
             $user->username = request("username");
             $user->password = bcrypt(request("password"));
+            $user->user_type = "user";
             $user->save();
-            return redirect("/");     
+            return redirect("/");
         }
         return back()
         ->withErrors(["username" => "El usuario ya existe"])

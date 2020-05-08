@@ -7,6 +7,7 @@ use App\Character;
 use App\Stats;
 use App\Scene;
 use App\Bag;
+use Dompdf\Dompdf;
 use Auth;
 class CharacterController extends Controller
 {
@@ -103,5 +104,14 @@ class CharacterController extends Controller
         Scene::where("char_id",$id)->delete();
         Bag::where("char_id",$id)->delete();
     }
-
+    public function pdf($id){
+        $character = Character::where("characters.char_id",$id)->first();
+        $stats = $character->stats();
+        $weapons = $character->weapons();
+        $armors = $character->armors();
+        $consumables = $character->consumables();
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView("pdf.character",["character"=>$character, "stats"=>$stats, "weapons" => $weapons,"armors" => $armors,"consumables" => $consumables, ]);
+        return $pdf->stream('archivo.pdf');
+    }
 }

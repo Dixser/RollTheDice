@@ -27,6 +27,8 @@ Route::get('/logout', function () {
 Route::get("/master","CampaignController@master");
 Route::get("/master/{scene}","SceneController@master");
 
+Route::get("/character/{id}/pdf","CharacterController@pdf");
+
 Route::resource('/armor', 'ArmorController');
 Route::resource('/bag', 'BagController');
 Route::resource('/campaign', 'CampaignController');

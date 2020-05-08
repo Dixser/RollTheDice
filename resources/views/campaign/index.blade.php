@@ -10,7 +10,6 @@
 <br><br>
 <table>
 <tr>
-<th>ID</th>
 <th>Nombre de la campaña</th>
 <th>Master</th>
 <th>Personaje</th>
@@ -22,7 +21,6 @@
 @csrf
 <input type="hidden" name="campaign_id" value="{{ $campaign->campaign_id }}">
 <tr>
-<td>{{ $campaign->campaign_id }}</td>
 <td>{{ $campaign->campaign_name }}</td>
 <td>{{ $campaign->master }}</td>
 <td>
