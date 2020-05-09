@@ -39,11 +39,11 @@
 		</td>
 		<td>{{ $weapon->item_price }} monedas</td>
 		@if(Auth::user()->user_type=="admin")
-		<td> <a href="/item/{{$weapon->item_id}}"><i class="fas fa-edit"></i></a></td>
+		<td> <a href="/item/{{$weapon->item_id}}/edit"><i class="fas fa-edit edit"></i></a></td>
     	<td>	<form action="/item/{{$weapon->item_id}}" method="POST">
 			@csrf
 			@method("DELETE")
-			<button type="submit" class="fas fa-times-circle"></button>
+			<button type="submit" class="fas fa-times-circle delete"></button>
 			</form>
 		</td>
 		@endif
@@ -77,11 +77,11 @@
 		</td>
 		<td>{{ $armor->item_price }} monedas</td>
 		@if(Auth::user()->user_type=="admin")
-		<td><a href="/item/{{$armor->item_id}}"><i class="fas fa-edit"></i></a></td>
+		<td><a href="/item/{{$armor->item_id}}"><i class="fas fa-edit edit"></i></a></td>
     	<td>	<form action="/item/{{$armor->item_id}}" method="POST">
 			@csrf
 			@method("DELETE")
-			<button type="submit" class="fas fa-times-circle"></button>
+			<button type="submit" class="fas fa-times-circle delete"></button>
 			</form>
 		</td>
 		@endif
@@ -105,11 +105,12 @@
 		<td>{{ $consumable->description }}</td>
 		<td>{{ $consumable->item_price }} monedas</td>
 		@if(Auth::user()->user_type=="admin")
-		<td> <a href="/item/{{$consumable->item_id}}"><i class="fas fa-edit"></i></a></td>
-    	<td>	<form action="/item/{{$consumable->item_id}}" method="POST">
+		<td> <a href="/item/{{$consumable->item_id}}"><i class="fas fa-edit edit">  </i></a></td>
+		<td>
+		<form action="/item/{{$consumable->item_id}}" method="POST">
 			@csrf
 			@method("DELETE")
-			<button type="submit" class="fas fa-times-circle">
+			<button type="submit" class="fas fa-times-circle delete">
 			</button>
 			</form>
 		</td>

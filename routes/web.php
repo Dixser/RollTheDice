@@ -35,6 +35,7 @@ Route::resource('/campaign', 'CampaignController');
 Route::resource('/character', 'CharacterController');
 Route::resource('/consumable', 'ConsumableController');
 Route::resource('/item', 'ItemController');
+Route::resource('/roll', 'RollController');
 Route::resource('/scene', 'SceneController');
 Route::resource('/stats', 'StatsController');
 Route::resource('/user', 'UserController');

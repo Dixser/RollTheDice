@@ -173,8 +173,9 @@
         </select>
         <p>Modificador: <input type="number" name="modifier" value="0"></p>
         <p>Requisito para superar: <input type="number" name="score" value="15"></p>
-        <p class="{{$character[0]->char_id}}_result"></p>
+        <input type="hidden" name="char_name" value="{{$character[0]->char_name}}">
         <input type="submit" value="Tirar" name="roll" class="roll">
+        <p class="{{$character[0]->char_id}}_result"></p>
         </form>
     @endforeach
     <h1>Gestión de equipo</h1>

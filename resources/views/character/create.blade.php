@@ -6,9 +6,9 @@
             <div class="row">
                     <div class="col-md-8">
                         <p><strong>Nombre:</strong>
-                        <input type="text" @error("char_name") class="error" @enderror name="char_name" value="{{old('char_name')}}"></p>
+                        <input type="text" id="name" class="charRegExp" @error("char_name") class="error" @enderror name="char_name" value="{{old('char_name')}}"></p>
                         @error("char_name")
-                            <p class="error">{{ $errors->first("char_name") }}</p>
+                            <span class="error">{{ $errors->first("char_name") }}</span>
                         @enderror
 
                         <p><strong>Raza:</strong>
@@ -22,7 +22,7 @@
                             <option value="Trasgo">Trasgo (+1 Destreza -1 Constitución)</option>
                         </select>
                         @error("race")
-                            <p class="error">{{ $errors->first("race") }}</p>
+                            <span class="error">{{ $errors->first("race") }}</span>
                         @enderror
 
                         <p><strong>Alineamiento:</strong>
@@ -38,7 +38,7 @@
                             <option value="Caótico malvado">Caótico malvado</option>
                         </select>
                         @error("alignment")
-                            <p class="error">{{ $errors->first("alignment") }}</p>
+                            <span class="error">{{ $errors->first("alignment") }}</span>
                         @enderror
 
                     </div>
@@ -73,22 +73,22 @@
                             <option value="Trovador">Trovador</option>
                         </select>
                         @error("class")
-                            <p class="error">{{ $errors->first("class") }}</p>
+                            <span class="error">{{ $errors->first("class") }}</span>
                         @enderror
 
                         <p><strong>Religión:</strong>
-                        <input type="text" @error("religion") class="error" @enderror name="religion" value="{{old('religion')}}"></p>
+                        <input type="text" id="religion" class="charRegExp" @error("religion") class="error" @enderror name="religion" value="{{old('religion')}}"></p>
                         @error("religion")
-                            <p class="error">{{ $errors->first("religion") }}</p>
+                            <span class="error">{{ $errors->first("religion") }}</span>
                         @enderror
 
                         <p><strong>Ciudad Natal:</strong>
-                        <input type="text" @error("hometown") class="error" @enderror name="hometown" value="{{old('hometown')}}"></p>
+                        <input type="text" id="hometown" class="charRegExp" @error("hometown") class="error" @enderror name="hometown" value="{{old('hometown')}}"></p>
                         @error("hometown")
-                            <p class="error">{{ $errors->first("hometown") }}</p>
+                            <span class="error">{{ $errors->first("hometown") }}</span>
                         @enderror
                         <br>
-                        <input type="submit" name="submit" value="Crear Personaje">
+                        <input type="submit" name="submit" id="submit" value="Crear Personaje">
                     </div>
                     </form>
             </div>

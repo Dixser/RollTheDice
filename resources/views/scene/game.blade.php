@@ -46,7 +46,8 @@
             <th>Carisma</th>
             <td>{{$stats->charisma}}</td>
         </tr>
-    </table>
+	</table>
+	@if($weapons==[])
     <h2>Armas</h2>
     <table>
     	<tr>
@@ -73,7 +74,9 @@
     		<td>{{ $weapon->item_price }} monedas</td>
     	</tr>
     	@endforeach
-    </table>
+	</table>
+	@endif
+	@if($armors==[])
     <h2>Armaduras</h2>
     <table>
     	<tr>
@@ -98,7 +101,9 @@
     		<td>{{ $armor->item_price }} monedas</td>
     	</tr>
     	@endforeach
-    </table>
+	</table>
+	@endif
+	@if($consumables==[])
     <h2>Objetos consumibles</h2>
     <table>
     	<tr>
@@ -113,5 +118,11 @@
     		<td>{{ $consumable->item_price }} monedas</td>
     	</tr>
     	@endforeach
-    </table>
+	</table>
+	@endif
+	<input type="hidden" name="campaign_id" id="campaign_id" value="{{$campaign_id}}">
+	<h2>Tiradas</h2>
+	<div class="resultados">
+		</div>
+	<button class="pedirTiradas">Recargar</button>
 @endsection

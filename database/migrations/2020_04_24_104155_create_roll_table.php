@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCampaignTable extends Migration
+class CreateRollTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCampaignTable extends Migration
      */
     public function up()
     {
-        Schema::create('campaigns', function (Blueprint $table) {
-            $table->increments("campaign_id");
-            $table->string("master");
-            $table->string("campaign_name");
-            $table->string("campaign_password");
+        Schema::create('rolls', function (Blueprint $table) {
+            $table->integer("campaign_id");
+            $table->string("roll");
         });
     }
 
@@ -28,6 +26,6 @@ class CreateCampaignTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campaign');
+        Schema::dropIfExists('rolls');
     }
 }

@@ -3,6 +3,7 @@
 	<head>
 		<title>Roll the Dice</title>
 		<meta charset="utf-8" />
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" />
 	</head>
@@ -20,7 +21,9 @@
 									<ul class="icons">
 										@auth
 										<li><span>{{Auth::user()->username}}</span></li>
-										<li><a href="/logout" class="button small primary"><i class="fas fa-power-off"></i> Cerrar Sesión</a></li>
+										<li><a href="/scene" class="button small primary"><i class="fas fa-gamepad"></i> Mis partidas</a></li>
+										<li><a href="/master" class="button small primary"><i class="fas fa-book"></i> Master</a></li>
+										<li><a href="/logout" class="button small primary logout"><i class="fas fa-power-off"></i> Cerrar Sesión</a></li>
 										@else
 										<li><a href="/user/create" class="button big">Registro</a></li>
 										<li><a href="/login" class="button big primary">Iniciar Sesión</a></li>
@@ -83,10 +86,10 @@
 								<footer id="footer">
 									<div class="mini-posts">
 										<article>
-											<img class="image slider" src="images/slider1.jpg" alt="" />
-											<img class="image slider" src="images/slider2.jpg" alt="" />
-											<img class="image slider" src="images/slider3.jpg" alt="" />
-											<img class="image slider" src="images/slider4.jpg" alt="" />
+											<img class="image slider" src="{{ URL::asset('images/slider1.jpg') }}" alt="" />
+											<img class="image slider" src="{{ URL::asset('images/slider2.jpg') }}" alt="" />
+											<img class="image slider" src="{{ URL::asset('images/slider3.jpg') }}" alt="" />
+											<img class="image slider" src="{{ URL::asset('images/slider4.jpg') }}" alt="" />
 										</article>
 										<button class="prevImage">Anterior</button>
 										<button class="nextImage">Siguiente</button>
@@ -106,7 +109,5 @@
 			<script src="{{ URL::asset('assets/js/breakpoints.min.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/util.js') }}"></script>
 			<script src="{{ URL::asset('assets/js/main.js') }}"></script>
-			<script src="{{ URL::asset('assets/js/rtd.js') }}"></script>
-
 	</body>
 </html>

@@ -37,9 +37,7 @@ class CampaignController extends Controller
         $campaign = new Campaign();
         $campaign->master = Auth::user()->username;
         $campaign->campaign_name = request("campaign_name");
-        $campaign->campaign_password = request("campaign_password");
-        $campaign->chat_file = $campaign->master."_".$campaign->campaign_name.".txt";
-        
+        $campaign->campaign_password = request("campaign_password");        
 
         $campaign->save();
         return redirect()->action('CampaignController@master');

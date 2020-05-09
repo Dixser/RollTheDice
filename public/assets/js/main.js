@@ -260,10 +260,7 @@
 			});
 
 			//PROYECTO
-			$("div.weapon").hide();
-			$("div.armor").hide();
-			$("div.consumable").hide();
-			$("input[name$='item_type']").on("change",(function() {
+			$("input[name$='item_type']").on("change",(function() {		//muestra solo el formulario de creación de equipo que interesa para el objeto que se va a crear
 				$("div.weapon").hide();
 				$("div.armor").hide();
 				$("div.consumable").hide();
@@ -273,65 +270,193 @@
 			$(".char_hide").click(function(){
 				$(this).next().toggle();
 			});
-			$(".roll").on("submit",function(event){
-				event.preventDefault();
-				data = $(this).serialize();
-				data = data.split("&");
-				for(i=1;i<data.length;i++){
+			$(".roll").on("submit",function(event){ //realización de una tirada
+				event.preventDefault(); //previene el submit del formulario
+				data = $(this).serialize(); //recibimos todos los datos del formulario en una string
+				data = data.split("&"); //separamos la string para tener los valores
+				for(i=0;i<data.length;i++){
 					data[i] = data[i].split("=");
 				}
-				roll = Math.floor((Math.random() * data[2][1]) + 1);
-				result = roll + parseInt(data[3][1]) + parseInt(data[4][1]) - parseInt(data[5][1]);
-				if(result<0){
+				data[6][1] = data[6][1].split("%20").join(" ") //Convierte %20 (unicode para espacios) en espacios
+				roll = Math.floor((Math.random() * data[2][1]) + 1); //realizamos una tirada aleatoria entre 1 y el nº de caras del dado
+				result = roll + parseInt(data[3][1]) + parseInt(data[4][1]) - parseInt(data[5][1]); //hacemos la operación de sumarle el atributo correspondiente, modificadores
+				if(result<0){																		//y calculamos el resultado con la dificultad de la tirada
 					result="<strong class='failed'> NO SUPERADO ("+result+")";
 				}else{
 					result="<strong class='passed'> SUPERADO ("+result+")";
 				}
-				var fecha = new Date();
+				var fecha = new Date();		 		//extramos la timestamp de la tirada para certificar el día y hora de la tirada
 				horaTirada="["+fecha.getDay()+"/"
 				+fecha.getMonth()+"/"
 				+fecha.getFullYear()+" "
 				+fecha.getHours()+":"
 				+fecha.getMinutes()+":"
-				+fecha.getSeconds()+"]"
+				+fecha.getSeconds()+"] "
 
-				texto = horaTirada+
-				" Tirada de D"+data[2][1]+" con resultado "+roll+
+				texto = horaTirada+			//damos formato al html a mostrar
+				data[6][1]+
+				" realizó una tirada de D"+data[2][1]+" con resultado "+roll+
 				" (Mod: "+data[4][1]+
 				" Atr: +"+data[3][1]+
 				") Requisito: "+data[5][1]+
 				result+"<br>"
-
+				
+				
 				$("."+data[1][1]+"_result").append(texto);
+				$.ajax({ //hacemos una petición ajax para subir el resultado a la BBDD
+					type:"POST",  //sin hacer recarga en la página
+					url: "/roll",
+					headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
+					data: {		//CSRF es el token que usa laravel para evitar que estas 
+						campaign_id: data[1][1], //peticiones se hagan por usuarios sin autorización
+						roll: texto
+					}
+				});
 			})
-			
-			var slideIndex = 1;
+
+			//Pantalla del jugador
+			$(".pedirTiradas").click(function(){
+				id = $("#campaign_id").val();
+				$.ajax({
+					type:"GET", 
+					url: "/roll/"+id,
+					headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
+					success: function(rolls){
+						$(".resultados").html("");
+						for(i=0;i<rolls.length;i++){
+							$(".resultados").append(rolls[i].roll);
+						}
+					}
+					
+				})
+				
+			});
+
+
+
+
+
+			//Slider
+			var slideIndex = 1; //establece la primera imagen del slider
 			showSlides(slideIndex);
 
-			$(".nextImage").click(function(){
+			$(".nextImage").click(function(){ //imagen posterior del slider
 				slideIndex+=1;
 				showSlides(slideIndex);
 			});
-			$(".prevImage").click(function(){
+			$(".prevImage").click(function(){ //imagen previa del slider
 				slideIndex-=1;
 				showSlides(slideIndex);
 			});
 
 			function showSlides(n) {
 			  var i;
-			  var slides = document.getElementsByClassName("slider");
-			  if (n > slides.length) {slideIndex = 1}
+			  var slides = $(".slider");
+			  if (n > slides.length) {slideIndex = 1} //establecemos los limites del slider
 			  if (n < 1) {slideIndex = slides.length}
-			  for (i = 0; i < slides.length; i++) {
-				  //slides[i].style.display = "none";
+			  for (i = 0; i < slides.length; i++) { //ocultamos todos los elementos
 				  $(".slider").eq(i).hide();
 			  }
-			  $(".slider").eq(slideIndex-1).fadeIn("slow");
-			  //slides[slideIndex-1].style.display = "block";
-			  
+			  $(".slider").eq(slideIndex-1).fadeIn("slow"); //Usamos Fade para la aparición progresiva de la imagen
 			}
 
+/*
+			//Validación de formularios
+			$("#submit").prop("disabled",true); //deshabilita los formulario hasta comprobar que los datos introducidos son correctos
+			//Expresiones regulares usadas en los formularios
+			var alfaNumericoReg = /^\s*[a-zA-Z0-9,\s]+\s*$/; //valida letras, números y espacios
+			var contraseñaReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //Minimo 8 caracteres, números y letras
+			var numericoReg = /^(0|[1-9][0-9]*)$/
+			//Login
+			$(".loginRegExp").keyup(function(){
+					if(loginCheck()){
+						$("#submit").prop("disabled",false);
+					}else{
+						$("#submit").prop("disabled",true);
+					}
+			})
+			function loginCheck(){ //comprueba las expresiones regulares y la longitud de los campos
+				if($("#name").val().length<=4 && !alfaNumericoReg.test($("#name").val())){
+					return false;
+				}
+				if($("#password").val().length<=8 && !contraseñaReg.test($("#password").val())){
+					return false;
+				}
+				return true;
+			}
+			$(".charRegExp").keyup(function(){
+				if(charCheck()){
+					$("#submit").prop("disabled",false);
+				}else{
+					$("#submit").prop("disabled",true);
+				}
+			})
+			function charCheck(){ //comprueba las expresiones regulares y la longitud de los campos
+				if($("#name").val().length<=4 && !alfaNumericoReg.test($("#name").val())){
+					return false;
+				}
+				if($("#religion").val().length<=4 && !alfaNumericoReg.test($("#religion").val())){
+					return false;
+				}
+				if($("#hometown").val().length<=4 && !alfaNumericoReg.test($("#hometown").val())){
+					return false;
+				}
+				return true;
+			}
+			$(".itemRegExp").keyup(function(){
+				if(itemCheck()){
+					$("#submit").prop("disabled",false);
+				}else{
+					$("#submit").prop("disabled",true);
+				}
+			})
+			$("input[name='item_type']").click(function(){ //evita el cumplimentar un tipo de objeto, cambiar de objeto y poder guardarlo
+				if(itemCheck()){
+					$("#submit").prop("disabled",false);
+				}else{
+					$("#submit").prop("disabled",true);
+				}
+			})
 
+			
+			function itemCheck(){ //comprueba las expresiones regulares y la longitud de los campos
+				if($("#name").val().length<=4 && !alfaNumericoReg.test($("#name").val())){
+					return false;
+				}
+				if(!numericoReg.test($("#price").val())){
+					return false;
+				}
+				if($("input[name='item_type']:checked").val()=="weapon"){ //comprueba los campos segun el tipo de objeto
+					if(!numericoReg.test($("#weapon_range").val())){
+						return false;
+					}
+					if(!numericoReg.test($("#weapon_damage").val())){
+						return false;
+					}
+					if($("#weapon_type").val().length<=4 && !alfaNumericoReg.test($("#weapon_type").val())){
+						return false;
+					}
+					
+				}else if($("input[name='item_type']:checked").val()=="armor"){
+					if(!numericoReg.test($("#armour").val())){
+						return false;
+					}
+					if(!numericoReg.test($("#penality").val())){
+						return false;
+					}
+				}else if($("input[name='item_type']:checked").val()=="consumable"){
+					if($("#description").val().length<=4 && !alfaNumericoReg.test($("#description").val())){
+						return false;
+					}
+				}else{
+					return false;
+				}
+
+
+				return true;
+			}
+
+			*/
 
 
 

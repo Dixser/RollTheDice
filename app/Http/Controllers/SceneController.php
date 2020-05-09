@@ -65,7 +65,7 @@ class SceneController extends Controller
         $weapons = $character->weapons();
         $armors = $character->armors();
         $consumables = $character->consumables();
-        return view("scene.game",["character"=>$character, "stats"=>$stats, "weapons" => $weapons,"armors" => $armors,"consumables" => $consumables, ]);
+        return view("scene.game",["character"=>$character, "stats"=>$stats, "weapons" => $weapons,"armors" => $armors,"consumables" => $consumables,"campaign_id" => $id ]);
 
     }
 

@@ -7,7 +7,7 @@
                     <div class="row">
                     <div class="col-md-8">
                         <p><strong>Nombre:</strong>
-                        <input type="text" @error("char_name") class="error" @enderror name="char_name" value="{{$character->char_name}}"></p>
+                        <input type="text" id="name" class="charRegExp" @error("char_name") class="error" @enderror name="char_name" value="{{$character->char_name}}"></p>
                         @error("char_name")
                             <p class="error">{{ $errors->first("char_name") }}</p>
                         @enderror
@@ -28,13 +28,13 @@
                        
 
                         <p><strong>Religión:</strong>
-                        <input type="text" @error("religion") class="error" @enderror name="religion" value="{{$character->religion}}"></p>
+                        <input type="text" id="religion" class="charRegExp" @error("religion") class="error" @enderror name="religion" value="{{$character->religion}}"></p>
                         @error("religion")
                             <p class="error">{{ $errors->first("religion") }}</p>
                         @enderror
 
                         <p><strong>Ciudad Natal:</strong>
-                        <input type="text" @error("hometown") class="error" @enderror name="hometown" value="{{$character->hometown}}"></p>
+                        <input type="text" id="hometown" class="charRegExp" @error("hometown") class="error" @enderror name="hometown" value="{{$character->hometown}}"></p>
                         @error("hometown")
                             <p class="error">{{ $errors->first("hometown") }}</p>
                         @enderror
