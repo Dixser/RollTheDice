@@ -41,3 +41,24 @@ Route::resource('/stats', 'StatsController');
 Route::resource('/user', 'UserController');
 Route::resource('/weapon', 'WeaponController');
 
+Route::get("races/elves", function () {
+    return view('races.elves');
+});
+Route::get("races/dwarves", function () {
+    return view('races.dwarves');
+});
+Route::get("races/gnomes", function () {
+    return view('races.gnomes');
+});
+Route::get("races/humans", function () {
+    return view('races.humans');
+});
+Route::get("races/halflings", function () {
+    return view('races.halflings');
+});
+Route::get("races/orcs", function () {
+    return view('races.orcs');
+});
+Route::get("races/goblins", function () {
+    return view('races.goblins');
+});

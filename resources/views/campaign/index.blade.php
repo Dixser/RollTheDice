@@ -5,7 +5,7 @@
 	<h1>Campañas</h1>
 	<p>¡Busca partidas en linea y juega ahora!</p>
 </header>
-<p>Bienvenido a nuestra sección de campañas, aquí podrás buscar partidas existentes y unirte con un personaje creado previamente. Si aun no tienes un personaje creado, pulsa <a href="/character/create">aquí</a>.</p>
+<p>¡Bienvenido a nuestra sección de campañas! aquí podrás buscar partidas existentes y apuntarte con un personaje creado previamente. Si aun no tienes un personaje creado, pulsa <a href="/character/create">aquí para crearlo</a>. Si ya te has unido previamente, accede <a href="">aqui para ver tus partidas.</a></p>
 <a href="/campaign/create" class="button big primary">+ Crear Campaña</a>
 <br><br>
 <table>

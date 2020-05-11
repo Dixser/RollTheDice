@@ -123,6 +123,6 @@
 	<input type="hidden" name="campaign_id" id="campaign_id" value="{{$campaign_id}}">
 	<h2>Tiradas</h2>
 	<div class="resultados">
-		</div>
+	</div>
 	<button class="pedirTiradas">Recargar</button>
 @endsection

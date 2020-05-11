@@ -259,7 +259,24 @@
 
 			});
 
-			//PROYECTO
+			//PROYECTO////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			////////////////////////////////////////////
 			$("input[name$='item_type']").on("change",(function() {		//muestra solo el formulario de creación de equipo que interesa para el objeto que se va a crear
 				$("div.weapon").hide();
 				$("div.armor").hide();
@@ -267,9 +284,11 @@
 				$("div."+$(this).val()).toggle();
 				
 			}));
-			$(".char_hide").click(function(){
-				$(this).next().toggle();
+			$(".char_hide").click(function(){ //oculta el contenido para facilitar la organización
+				$(this).next().toggle("fast");
+				$(this).children("i").toggleClass("closed");
 			});
+
 			$(".roll").on("submit",function(event){ //realización de una tirada
 				event.preventDefault(); //previene el submit del formulario
 				data = $(this).serialize(); //recibimos todos los datos del formulario en una string
@@ -278,16 +297,16 @@
 					data[i] = data[i].split("=");
 				}
 				data[6][1] = data[6][1].split("%20").join(" ") //Convierte %20 (unicode para espacios) en espacios
-				roll = Math.floor((Math.random() * data[2][1]) + 1); //realizamos una tirada aleatoria entre 1 y el nº de caras del dado
-				result = roll + parseInt(data[3][1]) + parseInt(data[4][1]) - parseInt(data[5][1]); //hacemos la operación de sumarle el atributo correspondiente, modificadores
-				if(result<0){																		//y calculamos el resultado con la dificultad de la tirada
+				roll = Math.floor((Math.random() * data[3][1]) + 1); //realizamos una tirada aleatoria entre 1 y el nº de caras del dado
+				result = roll + parseInt(data[1][1]) + parseInt(data[4][1]); //hacemos la operación de sumarle el atributo correspondiente, modificadores
+				if(result<parseInt(data[5][1])){																		//y calculamos el resultado con la dificultad de la tirada
 					result="<strong class='failed'> NO SUPERADO ("+result+")";
 				}else{
 					result="<strong class='passed'> SUPERADO ("+result+")";
 				}
 				var fecha = new Date();		 		//extramos la timestamp de la tirada para certificar el día y hora de la tirada
-				horaTirada="["+fecha.getDay()+"/"
-				+fecha.getMonth()+"/"
+				horaTirada="["+fecha.getDate()+"/"
+				+(fecha.getMonth()+1)+"/"
 				+fecha.getFullYear()+" "
 				+fecha.getHours()+":"
 				+fecha.getMinutes()+":"
@@ -295,30 +314,62 @@
 
 				texto = horaTirada+			//damos formato al html a mostrar
 				data[6][1]+
-				" realizó una tirada de D"+data[2][1]+" con resultado "+roll+
+				" realizó una tirada de D"+data[3][1]+" con resultado "+roll+
 				" (Mod: "+data[4][1]+
-				" Atr: +"+data[3][1]+
+				" Atr: +"+data[1][1]+
 				") Requisito: "+data[5][1]+
 				result+"<br>"
 				
-				
-				$("."+data[1][1]+"_result").append(texto);
+				$("."+data[2][1]+"_result").append(texto);
 				$.ajax({ //hacemos una petición ajax para subir el resultado a la BBDD
 					type:"POST",  //sin hacer recarga en la página
 					url: "/roll",
 					headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
 					data: {		//CSRF es el token que usa laravel para evitar que estas 
-						campaign_id: data[1][1], //peticiones se hagan por usuarios sin autorización
+						campaign_id: data[7][1], //peticiones se hagan por usuarios sin autorización
 						roll: texto
 					}
 				});
 			})
 
+
+			$(".masterRoll").click(function(){ //realización de una tirada del master
+				roll = Math.floor((Math.random() * $("#masterDice").val()) + 1); //realizamos una tirada aleatoria entre 1 y el nº de caras del dado
+				result = parseInt(roll) + parseInt($("#masterModifier").val()); //hacemos la operación de sumarle el atributo correspondiente, modificadores
+				if(result<parseInt($("#masterScore").val())){																		//y calculamos el resultado con la dificultad de la tirada
+					result="<strong class='failed'> NO SUPERADO ("+result+")";
+				}else{
+					result="<strong class='passed'> SUPERADO ("+result+")";
+				}
+				var fecha = new Date();		 		//extramos la timestamp de la tirada para certificar el día y hora de la tirada
+				horaTirada="["+fecha.getDate()+"/"
+				+(fecha.getMonth()+1)+"/"
+				+fecha.getFullYear()+" "
+				+fecha.getHours()+":"
+				+fecha.getMinutes()+":"
+				+fecha.getSeconds()+"] "
+
+				texto = horaTirada+			//damos formato al html a mostrar
+				" Tirada de D"+$("#masterDice").val()+" con resultado "+roll+
+				" (Mod: "+$("#masterModifier").val()+") Requisito: "+$("#masterScore").val()+
+				result+"<br>"
+				
+				$(".master_result").append(texto);
+			})
+
+
+
+
+			$(".limpiarTiradas").click(function(){ //limpia el historial de tiradas
+				$(this).prev().children("p").last().empty();
+			});
+
+
 			//Pantalla del jugador
-			$(".pedirTiradas").click(function(){
+			$(".pedirTiradas").click(function(){ //Petición AJAX para recibir las tiradas efectuadas en la campaña.
 				id = $("#campaign_id").val();
 				$.ajax({
-					type:"GET", 
+					type:"GET",
 					url: "/roll/"+id,
 					headers: {"X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")},
 					success: function(rolls){
@@ -360,7 +411,7 @@
 			  $(".slider").eq(slideIndex-1).fadeIn("slow"); //Usamos Fade para la aparición progresiva de la imagen
 			}
 
-/*
+
 			//Validación de formularios
 			$("#submit").prop("disabled",true); //deshabilita los formulario hasta comprobar que los datos introducidos son correctos
 			//Expresiones regulares usadas en los formularios
@@ -456,7 +507,7 @@
 				return true;
 			}
 
-			*/
+			
 
 
 

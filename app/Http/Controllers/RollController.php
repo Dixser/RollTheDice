@@ -31,7 +31,7 @@ class RollController extends Controller
     }
     public function show($id)
     {
-        $rolls = Roll::where("campaign_id",$id)->get();
+        $rolls = Roll::take(10)->orderBy("campaign_id","desc")->where("campaign_id",$id)->get();
         return $rolls;
     }
 

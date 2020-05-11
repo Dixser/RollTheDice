@@ -1,23 +1,19 @@
 @extends("layout.index")
 @section("content")
-<header>
 <br>
 	<h1>Tus personajes</h1>
-</header>
 <p>Bienvenido a tu panel de control de tus personajes, aquí podrás echar un vistazo a tus personajes y realizar un par de acciones con ellos. Si aun no tienes un personaje creado, pulsa <a href="/character/create">aquí</a>.</p>
 <a href="/character/create" class="button big primary">+ Crear Personaje</a>
 <br><br>
 @foreach ($characters as $character)
 <h3>{{$character->char_name}}, {{$character->class}} de Nivel {{$character->level}}  ({{$character->alignment}}) </h3>
-<h2>
-    <a href="/character/{{$character->char_id}}/edit"><i class="fas fa-edit"></i></a>
-</h2>
 <form action="/character/{{$character->char_id}}" method="POST">
+<a href="/character/{{$character->char_id}}/pdf"><i class="fas fa-file-pdf edit"></i></a>
+<a href="/character/{{$character->char_id}}/edit"><i class="fas fa-edit edit"></i></a>
 @csrf
 @method("DELETE")
-<button type="submit" class="fas fa-times-circle"></button>
+<button type="submit" class="fas fa-times-circle delete"></button>
 </form>
-<a href="/character/{{$character->char_id}}/pdf">Ver pdf</a>
 <br>
 <span>Información</span>
 <table>

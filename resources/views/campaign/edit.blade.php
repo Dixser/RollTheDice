@@ -7,13 +7,13 @@
                         @csrf
                         @method("PUT")
                         <p><strong>Nombre de la campaña: </strong>
-                        <input type="text" id="name" class="loginRegExp" @error("campaign_name") class="error" @enderror name="campaign_name" value="{{$campaign->campaign_name}}"></p>
+                        <p><input type="text" id="name" class="loginRegExp" @error("campaign_name") class="error" @enderror name="campaign_name" value="{{$campaign->campaign_name}}"></p>
                         @error("campaign_name")
                             <p class="error">{{ $errors->first("campaign_name", "Este campo es requerido") }}</p>
                         @enderror
 
-                        <p><strong>Contraseña de la campaña:</strong>
-                        <input type="password" id="password" class="loginRegExp" @error("campaign_password") class="error" @enderror name="campaign_password" value="{{$campaign->campaign_password}}"></p>
+                        <p><strong>Contraseña de la campaña:</strong></p>
+                        <p><input type="password" id="password" class="loginRegExp" @error("campaign_password") class="error" @enderror name="campaign_password" value="{{$campaign->campaign_password}}"></p>
                         @error("campaign_password")
                             <p class="error">{{ $errors->first("campaign_password") }}</p>
                         @enderror

@@ -72,12 +72,15 @@
 											<a href="/item">Armería</a>
 										</li>
 										<li>
-											<span class="opener">Razas</span>
+											<span class="opener">Biblioteca</span>
 											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
+												<li><a href="/races/elves">Elfos</a></li>
+												<li><a href="/races/dwarves">Enanos</a></li>
+												<li><a href="/races/gnomes">Gnomos</a></li>
+												<li><a href="/races/humans">Humanos</a></li>
+												<li><a href="/races/halflings">Medianos</a></li>
+												<li><a href="/races/orcs">Orcos</a></li>
+												<li><a href="/races/goblins">Trasgos</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -95,7 +98,7 @@
 										<button class="nextImage">Siguiente</button>
 									</div>
 									<br>
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy; Daniel Ortiz Maciá. Proyecto DAW 19-20</p>
 								</footer>
 
 						</div>

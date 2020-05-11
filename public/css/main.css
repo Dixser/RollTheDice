@@ -2270,11 +2270,38 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+/*****************************************************/
 
-  .signup{
-    width: 50%;
-  }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************/
   .slider{
     display: none;
     width: 288px;
@@ -2284,13 +2311,18 @@ button,
     font-size: 2em;
   }
   a.logout{
-    background-color: #470000 !important;
+    background-color: #700000 !important;
+  }
+  button.logout{
+    background-color: #700000 !important;
+    color: white !important;
+    box-shadow: inset  0 0 0 2px #630000 !important;
   }
   a.logout:hover{
-    background-color: #3b0000 !important;
+    background-color: #4d0000 !important;
   }
   a.logout:active{
-    background-color: #4e0000 !important;
+    background-color: #910000 !important;
   }
   span.error{
       color: red;
@@ -2322,13 +2354,14 @@ button,
     outline: 0;
     padding: 0 1em;
     text-decoration: none;
-    width: 10%; 
+    width: 15%; 
     height: 47px;
   }
   input[type=number]::-webkit-inner-spin-button, /* Le quita las flechas de añadir y restar*/
   input[type=number]::-webkit-outer-spin-button { 
       -webkit-appearance: none; 
       margin: 0; 
+
 }
   button.delete{
     color: rgb(148, 0, 0) !important; 
@@ -2348,3 +2381,22 @@ button,
   .char_hide{
     cursor: pointer;
   }
+  p select,input[type="text"],input[type="password"],textarea{
+    width: 30%;
+  }
+  .closed{
+    animation: rotate 0.1s linear 1 forwards;
+  }
+  @keyframes rotate{
+    100% {transform: rotate(90deg)}
+  }
+
+
+
+  .passed{
+    color: rgb(0, 82, 0);
+  }
+  .failed{
+    color: rgb(114, 0, 0);
+  }
+  

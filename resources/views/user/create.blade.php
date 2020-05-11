@@ -3,8 +3,6 @@
 <br>
 	<h1>Registro de usuario</h1>
 </header>
-            <div class="row">
-                <div class="col-md-8">
                     <form action="/user" method="POST">
                         @csrf
                         <p>Nombre de Usuario: 
@@ -21,6 +19,4 @@
                         <br><br>
                         <input type="submit" name="submit" id="submit" value="Registrarse">
                     </form>
-                </div>
-            </div>
 @endsection

@@ -2,7 +2,7 @@
 @section("content")
     <h1>Personajes</h1>
     @foreach($data as $character)
-    <h2 class="char_hide">{{$character[0]->char_name}}</h2>
+    <h2 class="char_hide">{{$character[0]->char_name}}    <i class="fas fa-chevron-right"></i></h2>
     <div class="character_info">
         <form action="/stats/{{$character[0]->char_id}}" method="post">
         @csrf
@@ -56,6 +56,7 @@
         </table>
         <input type="submit" value="Guardar Cambios">
         </form>
+        @if(count($character[2]))
         <h2>Armas</h2>
         <table>
         	<tr>
@@ -87,13 +88,15 @@
 			            @method("DELETE")
                         <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
                         <input type="hidden" name="campaign_id" value="{{$id}}">
-			            <button type="submit" class="fas fa-times-circle">
+			            <button type="submit" class="fas fa-times-circle delete">
 			            </button>
 			        </form>
 		        </td>
         	</tr>
         	@endforeach
         </table>
+        @endif
+        @if(count($character[3]))
         <h2>Armaduras</h2>
         <table>
         	<tr>
@@ -123,13 +126,15 @@
 			            @method("DELETE")
                         <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
                         <input type="hidden" name="campaign_id" value="{{$id}}">
-			            <button type="submit" class="fas fa-times-circle">
+			            <button type="submit" class="fas fa-times-circle delete">
 			            </button>
 			        </form>
 		        </td>
         	</tr>
         	@endforeach
         </table>
+        @endif
+        @if(count($character[4]))
         <h2>Objetos consumibles</h2>
         <table>
         	<tr>
@@ -149,36 +154,44 @@
 			            @method("DELETE")
                         <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
                         <input type="hidden" name="campaign_id" value="{{$id}}">
-			            <button type="submit" class="fas fa-times-circle">
+			            <button type="submit" class="fas fa-times-circle delete">
 			            </button>
 			        </form>
 		        </td>
         	</tr>
         	@endforeach
         </table>
+        @endif
+        
     </div>
-    <h3 class="char_hide">Realizar tirada para {{$character[0]->char_name}}</h3>
-    <form action="/chat" class="roll" method="POST">
+    <h3 class="char_hide">Realizar tirada para {{$character[0]->char_name}}    <i class="fas fa-chevron-right"></i></h3>
+    <div>
+        <form action="/chat" class="roll" method="POST">
         @csrf
+        <p> 
+            <select name="stat">
+                <option value="0">Sin atributo (0)</option>
+                <option value="{{$character[1]->strength}}">Fuerza ({{$character[1]->strength}})</option>
+                <option value="{{$character[1]->dexerity}}">Destreza ({{$character[1]->dexerity}})</option>
+                <option value="{{$character[1]->stamina}}">Constitución ({{$character[1]->stamina}})</option>
+                <option value="{{$character[1]->intelligence}}">Inteligencia ({{$character[1]->intelligence}})</option>
+                <option value="{{$character[1]->wisdom}}">Sabiduría ({{$character[1]->wisdom}})</option>
+                <option value="{{$character[1]->charisma}}">Carisma ({{$character[1]->charisma}})</option>
+            </select>
+        </p>
         <input type="hidden" name="char_id" value="{{$character[0]->char_id}}">
         <p>Tipo de Dado: <input type="number" name="dice" min="2" value="20"> <span>caras</span></p>
-        <select name="stat">
-            <option value="0">Sin atributo (0)</option>
-            <option value="{{$character[1]->strength}}">Fuerza ({{$character[1]->strength}})</option>
-            <option value="{{$character[1]->dexerity}}">Destreza ({{$character[1]->dexerity}})</option>
-            <option value="{{$character[1]->stamina}}">Constitución ({{$character[1]->stamina}})</option>
-            <option value="{{$character[1]->intelligence}}">Inteligencia ({{$character[1]->intelligence}})</option>
-            <option value="{{$character[1]->wisdom}}">Sabiduría ({{$character[1]->wisdom}})</option>
-            <option value="{{$character[1]->charisma}}">Carisma ({{$character[1]->charisma}})</option>
-        </select>
         <p>Modificador: <input type="number" name="modifier" value="0"></p>
         <p>Requisito para superar: <input type="number" name="score" value="15"></p>
         <input type="hidden" name="char_name" value="{{$character[0]->char_name}}">
+        <input type="hidden" name="campaign" value="{{$id}}">
         <input type="submit" value="Tirar" name="roll" class="roll">
         <p class="{{$character[0]->char_id}}_result"></p>
-        </form>
+    </form>
+    <button class="logout limpiarTiradas">Limpiar historial</button>
+</div>
     @endforeach
-    <h1>Gestión de equipo</h1>
+    <h1 class="char_hide">Gestión de equipo    <i class="fas fa-chevron-right"></i></h1>
     <form action="/bag" method="POST">
         <p>
         @csrf
@@ -196,7 +209,17 @@
         </p>
         <input type="submit" name="submit" value="Dar objeto">
     </form>
-
+    <h1 class="char_hide">Realizar tirada independiente    <i class="fas fa-chevron-right"></i></h1>
+        <div>
+            <div>
+                <p>Tipo de Dado: <input type="number" id="masterDice" min="2" value="20"> <span>caras</span></p>
+                <p>Modificador: <input type="number" id="masterModifier" value="0"></p>
+                <p>Requisito para superar: <input type="number" id="masterScore" value="15"></p>
+                <button name="masterRoll" class="masterRoll">Tirar</button>
+                <p class="master_result"></p>
+            </div>
+            <button class="logout limpiarTiradas">Limpiar historial</button>
+        </div>
 
 
 @endsection

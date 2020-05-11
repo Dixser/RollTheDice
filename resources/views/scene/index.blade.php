@@ -5,7 +5,7 @@
 	<h1>Tus Partidas</h1>
 	<p>¡Accede a tus partidas aquí!</p>
 </header>
-<p>Entra a una partida a la cual hayas accedido previamente, si aún no te has registrado en ninguna partida pulsa <a href="/campaign">aquí</a>.</p>
+<p>El listado a continuación muestra las partidas a las cuales te has apuntado previamente. Si aún no estás registrado en ninguna partida, pulsa <a href="/campaign">aquí para ir a la sección de campañas disponibles</a>.</p>
 <br><br>
 <table>
 <tr>

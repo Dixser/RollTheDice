@@ -3,8 +3,6 @@
 <br>
 	<h1>Iniciar Sesión</h1>
 </header>
-            <div class="row">
-                <div class="col-md-8">
                     <form action="/login" id="user" method="POST">
                         @csrf
                         <p>Nombre de Usuario:
@@ -20,6 +18,4 @@
                         <br>
                         <input type="submit" name="submit" id="submit" value="Iniciar Sesión">
                     </form>
-                </div>
-            </div>
 @endsection

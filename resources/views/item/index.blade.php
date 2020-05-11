@@ -3,9 +3,9 @@
 <header>
 <br>
 	<h1>Equipo</h1>
-	<p>Todo lo que puedas necesitar para vencer</p>
+	<p>¡Todo lo que puedas necesitar para vencer!</p>
 </header>
-<p>Afiladas espadas, armaduras impenetrables, componentes mágicos... ¡Vencer al mal no es sencillo, pero llevar encima un arma fiable, una armadura adecuada para tu estilo de juego y un par de pociones de sobra siempre ayuda!</p>
+<p>Afiladas espadas, armaduras impenetrables, componentes mágicos... ¡Vencer al mal no es sencillo, pero llevar encima un arma fiable, una armadura adecuada para tu estilo de juego y un par de pociones de sobra siempre ayuda! Aqui tienes un listado de todo el equipo disponible, aprovecha y ojea lo que puedas necesitar en un futuro para vencer a cualquiera que se interponga en tu camino.</p>
 	@if(Auth::user()->user_type=="admin")
 	<a href="/item/create" class="button big primary">+ Crear Objeto</a>
 	@endif

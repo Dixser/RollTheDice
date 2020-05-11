@@ -105,6 +105,11 @@ class CharacterController extends Controller
         Bag::where("char_id",$id)->delete();
     }
     public function pdf($id){
+
+        $character = Character::where("user_id",Auth::user()->id)->where("char_id",$id)->first();
+        if($character==null){
+            return redirect("/");
+        }
         $character = Character::where("characters.char_id",$id)->first();
         $stats = $character->stats();
         $weapons = $character->weapons();

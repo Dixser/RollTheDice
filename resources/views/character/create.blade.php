@@ -1,10 +1,9 @@
 @extends("layout.index")
 @section("content")
+<br>
         <h1>Creación de personajes</h1>
                     <form action="/character" method="POST">
                         @csrf
-            <div class="row">
-                    <div class="col-md-8">
                         <p><strong>Nombre:</strong>
                         <input type="text" id="name" class="charRegExp" @error("char_name") class="error" @enderror name="char_name" value="{{old('char_name')}}"></p>
                         @error("char_name")
@@ -40,11 +39,6 @@
                         @error("alignment")
                             <span class="error">{{ $errors->first("alignment") }}</span>
                         @enderror
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
                     <p>
                             <strong>Sexo:</strong>
                         </p>
@@ -89,7 +83,5 @@
                         @enderror
                         <br>
                         <input type="submit" name="submit" id="submit" value="Crear Personaje">
-                    </div>
                     </form>
-            </div>
 @endsection

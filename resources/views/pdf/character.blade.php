@@ -96,6 +96,7 @@
         </tr>
     </table>
 </div>
+@if(count($weapons))
 <div class="equipo">
 <h2>Armas</h2>
     <table>
@@ -125,6 +126,8 @@
     	@endforeach
     </table>
 </div>
+@endif
+@if(count($armors))
 <div class="equipo">
     <h2>Armaduras</h2>
     <table>
@@ -151,6 +154,8 @@
     	</tr>
     	@endforeach
     </table>
+    @endif
+    @if(count($consumables))
     <div class="equipo">
     <h2>Objetos consumibles</h2>
     <table>
@@ -167,4 +172,6 @@
     	</tr>
     	@endforeach
     </table>
+    </div>
+    @endif
 </body>
