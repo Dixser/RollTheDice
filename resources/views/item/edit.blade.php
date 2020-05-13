@@ -78,7 +78,7 @@
                                 <label for="torso">Torso</label>
                                 <input type="radio" id="hand" name="body_part" value="Guantes">
 							    <label for="hand">Guantes</label>
-                                <input type="radio" id="leg" name="body_part" value="Piernas">
+                                <input type="radio" id="legs" name="body_part" value="Piernas">
                                 <label for="legs">Piernas</label>
                                 <input type="radio" id="foot" name="body_part" value="Pies">
 							    <label for="foot">Pies</label>
