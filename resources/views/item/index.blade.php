@@ -77,7 +77,7 @@
 		</td>
 		<td>{{ $armor->item_price }} monedas</td>
 		@if(Auth::user()->user_type=="admin")
-		<td><a href="/item/{{$armor->item_id}}"><i class="fas fa-edit edit"></i></a></td>
+		<td><a href="/item/{{$armor->item_id}}/edit"><i class="fas fa-edit edit"></i></a></td>
     	<td>	<form action="/item/{{$armor->item_id}}" method="POST">
 			@csrf
 			@method("DELETE")
@@ -105,7 +105,7 @@
 		<td>{{ $consumable->description }}</td>
 		<td>{{ $consumable->item_price }} monedas</td>
 		@if(Auth::user()->user_type=="admin")
-		<td> <a href="/item/{{$consumable->item_id}}"><i class="fas fa-edit edit">  </i></a></td>
+		<td> <a href="/item/{{$consumable->item_id}}/edit"><i class="fas fa-edit edit">  </i></a></td>
 		<td>
 		<form action="/item/{{$consumable->item_id}}" method="POST">
 			@csrf

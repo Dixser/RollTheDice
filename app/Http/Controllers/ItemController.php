@@ -33,6 +33,9 @@ class ItemController extends Controller
     }
     public function create()
     {
+        if(Auth::user()->user_type!="admin"){
+            return redirect("/");
+        }
         return view("item.create");
     }
 
@@ -102,6 +105,11 @@ class ItemController extends Controller
 
     public function edit($id)
     {
+        if(Auth::user()->user_type!="admin"){
+            return redirect("/");
+        }
+
+
         $item = Item::where("item_id",$id)->first();
         switch($item->item_type){
             case "weapon":
