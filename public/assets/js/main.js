@@ -416,8 +416,8 @@
 			$("#submit").prop("disabled",true); //deshabilita los formulario hasta comprobar que los datos introducidos son correctos
 			//Expresiones regulares usadas en los formularios
 			var alfaNumericoReg = /^\s*[a-zA-Z0-9,\s]+\s*$/; //valida letras, números y espacios
-			var contraseñaReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //Minimo 8 caracteres, números y letras
-			var numericoReg = /^(0|[1-9][0-9]*)$/
+			var contraseñaReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; //Minimo 8 caracteres, números y letras
+			var numericoReg = /^-?(0|[1-9][0-9]*)$/
 			//Login
 			$(".loginRegExp").keyup(function(){
 					if(loginCheck()){
@@ -430,7 +430,7 @@
 				if($("#name").val().length<=4 && !alfaNumericoReg.test($("#name").val())){
 					return false;
 				}
-				if($("#password").val().length<=8 && !contraseñaReg.test($("#password").val())){
+				if(!contraseñaReg.test($("#password").val())){
 					return false;
 				}
 				return true;

@@ -20,7 +20,7 @@
 									<a href="/" class="logo"><strong>Roll</strong> the Dice</a>
 									<ul class="icons">
 										@auth
-										<li><span>{{Auth::user()->username}}</span></li>
+										<li><span id="user">{{Auth::user()->username}}</span></li>
 										<li><a href="/scene" class="button small primary"><i class="fas fa-gamepad"></i> Mis partidas</a></li>
 										<li><a href="/master" class="button small primary"><i class="fas fa-book"></i> Master</a></li>
 										<li><a href="/logout" class="button small primary logout"><i class="fas fa-power-off"></i> Cerrar Sesión</a></li>
@@ -103,7 +103,6 @@
 
 						</div>
 					</div>
-
 			</div>
 
 		<!-- Scripts -->

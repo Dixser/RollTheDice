@@ -10,7 +10,7 @@
 	<a href="/item/create" class="button big primary">+ Crear Objeto</a>
 	@endif
 	<br><br>
-<h2>Armas</h2>
+<h2 class="char_hide">Armas    <i class="fas fa-chevron-right"></i></h2>
 <table>
 	<tr>
 		<th>Nombre</th>
@@ -50,7 +50,7 @@
 	</tr>
 	@endforeach
 </table>
-<h2>Armaduras</h2>
+<h2 class="char_hide">Armaduras    <i class="fas fa-chevron-right"></i></h2>
 <table>
 	<tr>
 		<th>Nombre</th>
@@ -88,7 +88,7 @@
 	</tr>
 	@endforeach
 </table>
-<h2>Objetos consumibles</h2>
+<h2 class="char_hide">Objetos consumibles    <i class="fas fa-chevron-right"></i></h2>
 <table>
 	<tr>
 		<th>Nombre</th>
