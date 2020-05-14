@@ -2302,15 +2302,15 @@ button,
 
 
 /******************************************************/
-  .slider{
+  .slider{ /* Imagenes del slideshow */
     display: none;
     width: 288px;
     height: 174px;
   }
-  .icon:before {
+  .icon:before { /* Tamaño de los iconos de font-awesome que he querido mostrar más grandes*/
     font-size: 2em;
   }
-  a.logout{
+  a.logout{ /*Estilos para los botones de cerrar sesión*/
     background-color: #700000 !important;
   }
   button.logout{
@@ -2324,14 +2324,15 @@ button,
   a.logout:active{
     background-color: #910000 !important;
   }
-  span.error{
+  span.error{ /*Color rojo y letra pequeña para mensajes de error*/
       color: red;
       font-size: 0.7em;
   }
-  input.error{
+  input.error{ /*Bordes rojos para inputs con errores*/
     border: 1px solid red;
   }
-  div.weapon{
+  div.weapon{ /*Ocultación de formularios de creación de equipos 
+    hasta ser mostrados mediante JavaScript*/
     display: none;
   }
   div.armor{
@@ -2363,7 +2364,7 @@ button,
       margin: 0; 
 
 }
-  button.delete{
+  button.delete{ /*Estilo de botones de borrado*/
     color: rgb(148, 0, 0) !important; 
     font-size: 2em;
     padding: 0;
@@ -2378,7 +2379,7 @@ button,
     font-size: 2em;
     border-bottom: none !important;
   }
-  .char_hide{
+  .char_hide{ /*Muestra un cursor distinto cuando se puede clicar en el encabezado para ocultar a su siguiente hermano*/
     cursor: pointer;
   }
   p select,input[type="text"],input[type="password"],textarea{
